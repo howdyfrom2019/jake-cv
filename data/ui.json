@@ -5,8 +5,8 @@
     "education": "학력 · 자격",
     "stack": "스택",
     "download": "다운로드",
-    "cvPdf": "이력서 PDF",
-    "portfolioPdf": "경력기술서 PDF",
+    "cvPdf": "이력서",
+    "portfolioPdf": "경력기술서",
     "details": "자세히",
     "back": "돌아가기",
     "now": "현재",
@@ -20,7 +20,11 @@
     "otherLocale": "en",
     "cvTitle": "이력서",
     "portfolioTitle": "경력기술서",
-    "noPosts": "아직 등록된 글이 없습니다."
+    "noPosts": "아직 등록된 글이 없습니다.",
+    "explorer": "스캐너에서 보기 ↗",
+    "preview": "미리보기",
+    "downloadPdf": "PDF 다운로드",
+    "previewHint": "아래는 PDF와 동일한 내용입니다."
   },
   "en": {
     "works": "Works",
@@ -28,8 +32,8 @@
     "education": "Education & Credentials",
     "stack": "Stack",
     "download": "Download",
-    "cvPdf": "CV (PDF)",
-    "portfolioPdf": "Portfolio (PDF)",
+    "cvPdf": "CV",
+    "portfolioPdf": "Portfolio",
     "details": "Details",
     "back": "Back",
     "now": "Now",
@@ -43,6 +47,10 @@
     "otherLocale": "ko",
     "cvTitle": "Curriculum Vitae",
     "portfolioTitle": "Portfolio",
-    "noPosts": "No posts yet."
+    "noPosts": "No posts yet.",
+    "explorer": "View on explorer ↗",
+    "preview": "Preview",
+    "downloadPdf": "Download PDF",
+    "previewHint": "This preview matches the PDF."
   }
 }

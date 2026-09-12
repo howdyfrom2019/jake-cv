@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: { default: 'Jake Kim', template: '%s · Jake Kim' },
   description: ko.profile.headline,
   openGraph: { siteName: 'Jake Kim', type: 'website' },
-  twitter: { card: 'summary', creator: '@b_cryptojvke' },
+  twitter: { card: 'summary', creator: '@b_cryptojake' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

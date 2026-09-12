@@ -20,6 +20,7 @@ PDF는 시스템 Chrome(headless)으로 `/print/{ko|en}/{cv|portfolio}`를 렌�
 | --- | --- |
 | `/`, `/en` | 랜딩. 이름, 후킹 문구, 커리어 흐름(블록체인 → 게임 → 컨트랙트 → 트레이딩 터미널), 아이콘, PDF 다운로드, 경력 요약, 글, 스택, 학력 |
 | `/work/[id]`, `/en/work/[id]` | 경력 상세. 성과, 프로젝트(문제 → 접근), 스택 |
+| `/preview/{cv\|portfolio}`, `/en/preview/...` | 이력서·경력기술서 미리보기. 상단 툴바에서 PDF 다운로드 |
 | `/print/{locale}/{cv\|portfolio}` | 인쇄용 문서. PDF 생성 소스, 검색 제외 |
 | `/downloads/jake-kim-{cv\|portfolio}-{ko\|en}.pdf` | 정적 PDF |
 

@@ -5,8 +5,8 @@
 - 이메일: jiovana.jake@gmail.com
 - GitHub: https://www.github.com/howdyfrom2019
 - LinkedIn: https://www.linkedin.com/in/sungjoo-kim-jake/
-- X: https://x.com/b_cryptojvke
-- Telegram: https://t.me/b_cryptojvke
+- X: https://x.com/b_cryptojake
+- Telegram: https://t.me/b_cryptojake
 - 포트폴리오: https://sungjoo-kim-jake.notion.site/Jake-002d8d2201634a0eaa471e92fe6ce6b2
 
 > `[확인 필요]` 표시는 아직 확인되지 않은 항목입니다.

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Icon } from '@/components/icons'
 import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
-import { SOURCE_LABEL, downloadPath, getCv, getUi, localePath, period, posts } from '@/lib/data'
+import { SOURCE_LABEL, getCv, getUi, localePath, period, posts } from '@/lib/data'
 import type { Locale } from '@/lib/types'
 
 function H({ children }: { children: React.ReactNode }) {
@@ -39,7 +39,7 @@ export function Home({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <div className="mt-6 flex items-center gap-4 text-muted">
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 text-muted">
           <a href={`mailto:${profile.email}`} aria-label="Email" className="hover:text-key">
             <Icon type="mail" />
           </a>
@@ -48,13 +48,13 @@ export function Home({ locale }: { locale: Locale }) {
               <Icon type={l.type} />
             </a>
           ))}
-          <span className="mx-1 h-4 w-px bg-line" />
-          <a href={downloadPath(locale, 'cv')} download className="u inline-flex items-center gap-1.5 text-sm hover:text-fg">
-            <Icon type="download" /> {ui.cvPdf}
-          </a>
-          <a href={downloadPath(locale, 'portfolio')} download className="u inline-flex items-center gap-1.5 text-sm hover:text-fg">
-            <Icon type="download" /> {ui.portfolioPdf}
-          </a>
+          <span className="mx-1 hidden h-4 w-px bg-line sm:block" />
+          <Link href={localePath(locale, '/preview/cv')} className="u inline-flex items-center gap-1.5 text-sm hover:text-fg">
+            <Icon type="doc" /> {ui.cvPdf}
+          </Link>
+          <Link href={localePath(locale, '/preview/portfolio')} className="u inline-flex items-center gap-1.5 text-sm hover:text-fg">
+            <Icon type="doc" /> {ui.portfolioPdf}
+          </Link>
         </div>
       </header>
 

@@ -73,6 +73,10 @@ export type UI = {
   cvTitle: string
   portfolioTitle: string
   noPosts: string
+  explorer: string
+  preview: string
+  downloadPdf: string
+  previewHint: string
 }
 
 export type PostSource = 'naver' | 'tistory' | 'paragraph' | 'medium' | 'velog' | 'brunch' | 'other'

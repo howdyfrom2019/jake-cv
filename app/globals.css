@@ -30,6 +30,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .k {

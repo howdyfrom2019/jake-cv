@@ -35,7 +35,7 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
         {e.contractUrl && (
           <p className="mt-2 text-sm text-dim">
             <a href={e.contractUrl} target="_blank" rel="noreferrer" className="u">
-              {e.contractUrl.replace('https://', '')}
+              {ui.explorer}
             </a>
           </p>
         )}

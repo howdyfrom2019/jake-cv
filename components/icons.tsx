@@ -32,6 +32,12 @@ export function Icon({ type }: { type: string }) {
           <path d="M11.94 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.64 6.8-1.63 7.7c-.12.55-.45.68-.9.42l-2.5-1.84-1.2 1.16c-.14.13-.25.24-.5.24l.17-2.53 4.6-4.16c.2-.18-.04-.28-.31-.1l-5.69 3.58-2.45-.77c-.53-.17-.54-.53.11-.79l9.57-3.69c.44-.16.83.11.73.78Z" />
         </svg>
       )
+    case 'doc':
+      return (
+        <svg className="h-[14px] w-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+          <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Zm0 0v5h5M9 13h6M9 17h6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
     case 'download':
       return (
         <svg className="h-[14px] w-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
