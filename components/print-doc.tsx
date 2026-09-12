@@ -1,4 +1,5 @@
 import { getCv, getUi, period, periodMonth } from '@/lib/data'
+import { collectTerms, glossary, stripTerms } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
 /**
@@ -11,6 +12,16 @@ export function PrintDoc({ locale, kind }: { locale: Locale; kind: 'cv' | 'portf
   const ui = getUi(locale)
   const { profile } = cv
   const full = kind === 'portfolio'
+  const S = (t: string) => stripTerms(t, locale)
+  const usedTerms = full
+    ? collectTerms(
+        cv.experiences.flatMap((e) => [
+          e.detail.description,
+          ...e.detail.impact,
+          ...e.detail.projects.flatMap((p) => [p.problem ?? '', ...p.approach]),
+        ]),
+      )
+    : []
 
   return (
     <div className="print-page mx-auto max-w-[760px] px-2 py-2">
@@ -62,13 +73,12 @@ export function PrintDoc({ locale, kind }: { locale: Locale; kind: 'cv' | 'portf
                   {full ? periodMonth(e.start, e.end, e.current, ui.now) : period(e.start, e.end, e.current, ui.now)}
                 </span>
               </div>
-              <p className="muted mt-0.5">{full ? e.detail.description : e.oneLiner}</p>
-              {full && e.detail.employmentNote && <p className="dim mt-0.5 text-[9pt]">{e.detail.employmentNote}</p>}
+              <p className="muted mt-0.5">{S(full ? e.detail.description : e.oneLiner)}</p>
 
               {!full && e.bullets.length > 0 && (
-                <ul className="bullets mt-1 space-y-0.5">
+                <ul className="bullets mt-0.5 space-y-0 leading-snug">
                   {e.bullets.map((b) => (
-                    <li key={b}>{b}</li>
+                    <li key={b}>{S(b)}</li>
                   ))}
                 </ul>
               )}
@@ -80,7 +90,7 @@ export function PrintDoc({ locale, kind }: { locale: Locale; kind: 'cv' | 'portf
                       <p className="mt-2 text-[9pt] font-semibold uppercase tracking-wide">{ui.impact}</p>
                       <ul className="bullets mt-0.5 space-y-0.5">
                         {e.detail.impact.map((i) => (
-                          <li key={i}>{i}</li>
+                          <li key={i}>{S(i)}</li>
                         ))}
                       </ul>
                     </>
@@ -96,12 +106,12 @@ export function PrintDoc({ locale, kind }: { locale: Locale; kind: 'cv' | 'portf
                         {p.problem && (
                           <p className="muted mt-0.5">
                             <span className="k">{ui.problem} · </span>
-                            {p.problem}
+                            {S(p.problem)}
                           </p>
                         )}
                         <ul className="bullets mt-0.5 space-y-0.5">
                           {p.approach.map((a) => (
-                            <li key={a}>{a}</li>
+                            <li key={a}>{S(a)}</li>
                           ))}
                         </ul>
                       </div>
@@ -154,6 +164,19 @@ export function PrintDoc({ locale, kind }: { locale: Locale; kind: 'cv' | 'portf
         </section>
       </div>
 
+      {full && usedTerms.length > 0 && (
+        <section className="mt-5">
+          <h2 className="rule mb-2 text-[11pt] font-semibold">{locale === 'ko' ? '용어 설명' : 'Glossary'}</h2>
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-1 text-[8.5pt]">
+            {usedTerms.map((id) => (
+              <div key={id} className="avoid-break">
+                <dt className="font-semibold">{glossary[id].term[locale]}</dt>
+                <dd className="muted">{glossary[id][locale]}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
     </div>
   )
 }

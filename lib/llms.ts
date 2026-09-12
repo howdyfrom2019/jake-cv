@@ -1,4 +1,5 @@
 import { SITE_URL, downloadPath, getCv, localePath, period, periodMonth, posts } from '@/lib/data'
+import { stripTerms } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
 const NOW = { ko: '현재', en: 'Now' }
@@ -39,7 +40,7 @@ export function buildLlmsTxt(): string {
   lines.push('## Work')
   for (const e of ko.experiences) {
     lines.push(
-      `- [${e.company}${e.project ? ` · ${e.project}` : ''}](${abs(localePath('ko', `/work/${e.id}`))}): ${e.role}, ${period(e.start, e.end, e.current, NOW.ko)}. ${e.oneLiner}`,
+      `- [${e.company}${e.project ? ` · ${e.project}` : ''}](${abs(localePath('ko', `/work/${e.id}`))}): ${e.role}, ${period(e.start, e.end, e.current, NOW.ko)}. ${stripTerms(e.oneLiner, 'ko')}`,
     )
   }
   lines.push('')
@@ -107,17 +108,17 @@ export function buildLlmsFullTxt(): string {
       )
       if (e.url) sections.push(e.url)
       if (e.contractUrl) sections.push(`Contract: ${e.contractUrl}`)
-      sections.push(e.detail.description)
+      sections.push(stripTerms(e.detail.description, locale))
       if (e.detail.impact.length) {
         sections.push('Impact:')
-        for (const i of e.detail.impact) sections.push(`  - ${i}`)
+        for (const i of e.detail.impact) sections.push(`  - ${stripTerms(i, locale)}`)
       }
       if (e.detail.projects.length) {
         sections.push('Projects:')
         for (const p of e.detail.projects) {
           sections.push(`  * ${p.title}${p.period ? ` (${p.period})` : ''}`)
-          if (p.problem) sections.push(`    Problem: ${p.problem}`)
-          for (const a of p.approach) sections.push(`    - ${a}`)
+          if (p.problem) sections.push(`    Problem: ${stripTerms(p.problem, locale)}`)
+          for (const a of p.approach) sections.push(`    - ${stripTerms(a, locale)}`)
         }
       }
       const stackLine = Object.entries(e.detail.stack)

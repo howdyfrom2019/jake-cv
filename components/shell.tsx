@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { GlossaryProvider } from '@/components/glossary-panel'
 import { getUi, localePath } from '@/lib/data'
 import type { Locale } from '@/lib/types'
 
@@ -16,6 +17,7 @@ export function Shell({
     ? localePath(ui.otherLocale, backHref)
     : ui.langHref
   return (
+    <GlossaryProvider locale={locale}>
     <div className="mx-auto max-w-[640px] px-6 pb-24 pt-10 sm:pt-16">
       <div className="mb-10 flex items-center justify-between text-sm text-dim">
         {backHref !== undefined ? (
@@ -31,5 +33,6 @@ export function Shell({
       </div>
       {children}
     </div>
+    </GlossaryProvider>
   )
 }

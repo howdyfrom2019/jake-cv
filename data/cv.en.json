@@ -79,37 +79,50 @@
       "start": "2025-10",
       "end": null,
       "current": true,
-      "oneLiner": "Multi-exchange crypto derivatives trading terminal. $10B notional processed and $1M revenue during pilot and private beta.",
+      "oneLiner": "A [[multi-exchange]] terminal built toward an institutional [[trading-desk]]. $10B [[notional]] processed and $1M revenue during pilot and private beta.",
       "bullets": [
-        "Cut steady-state browser memory from 3.8GB to about 1GB so traders can keep the terminal open all day without reloading.",
-        "Replaced react-grid-layout's CPU-bound layout math with an in-house translate-based grid, so chart-heavy dashboards drag and resize without stutter.",
-        "Established the team's AI workflow: context injection, a Claude–Codex planner/reviewer loop, and react-doctor cleanups to land the MVP feature flow. Built a Figma MCP + i18n agent pipeline for localization."
+        "Designed the order-execution flow that bundles [[options]] and futures orders across venues and accounts into one [[order-form]], unifying each exchange's symbol format and account structure on the frontend.",
+        "Cut steady-state browser memory from 3.8GB to about 1GB. Replaced [[react-grid-layout]]'s CPU-bound layout math with a [[translate-grid|translate-based grid]] so chart-heavy dashboards drag without stutter.",
+        "Established the team's AI workflow with [[context-injection]] and a Claude–Codex [[planner-reviewer]] loop, letting a small team finish the MVP. Built a [[figma-mcp|Figma MCP]] + [[i18n]] agent pipeline for localization."
       ],
       "detail": {
-        "description": "A trading terminal that puts options, futures, and spot across several exchanges on one screen. Piloted with a large multistrat fund; $10B notional processed and $1M in revenue during private beta. I led the frontend from initial setup and designed its 18 feature domains.",
+        "description": "A terminal that starts from crypto [[derivatives]] and is heading toward an institutional [[trading-desk]]. It handles crypto venues (Deribit, Hyperliquid, Lighter, Bybit, Binance) and traditional markets (OPRA US options, CME, IBKR) on one screen. Piloted with a large [[multistrat|multistrat fund]]; $10B [[notional]] processed and $1M in revenue during private beta. I led the frontend from initial setup and designed its 18 feature domains.",
         "impact": [
-          "$10B notional processed and $1M revenue during pilot and private beta. Pilot run with a large multistrat fund.",
+          "$10B [[notional]] processed and $1M revenue during pilot and private beta. Pilot run with a large [[multistrat|multistrat fund]].",
+          "Unified order execution and [[multi-exchange]] support on the frontend, so traders place orders across accounts from one screen instead of hopping between exchanges.",
           "Steady-state browser memory from 3.8GB down to about 1GB, so an all-day trading session no longer needs reloads.",
-          "Grid engine replacement removed React re-renders during drag and resize; no UX degradation with many chart widgets on screen.",
           "AI workflow adoption let a small team finish the entire MVP feature flow. Localization automated through a Figma to i18n-agent pipeline."
         ],
         "projects": [
+          {
+            "title": "Order execution and multi-exchange support",
+            "period": "2025.12 – 2026.09",
+            "problem": "Traders hold several accounts across venues like Deribit, Hyperliquid, and Bybit, and the same BTC option has a different symbol, decimals, and margin model on each. They used to hop between exchange screens to trade, and a slip sent money to the wrong account or instrument.",
+            "approach": [
+              "One [[order-form]] that selects several instruments and submits them together as a [[batch-order]]. Each leg gets an [[anchor-price]] so the preview shows an expected fill, and nothing leaves without passing validation.",
+              "An [[account-resolution]] rule that combines instrument, venue, and the user's choice to pick the destination account automatically, blocking wrong-account mistakes in the UI.",
+              "Venue symbol formats (Deribit 'BTC-26DEC25-90000-C' vs OPRA 'IBIT_271217P00048000') handled as structured fields (underlying, expiry, strike, call/put) rather than strings, so adding a venue does not break order logic.",
+              "Professional order types layered on top: [[tp-sl|TP/SL]] brackets, [[rfq|RFQ]] quotes, [[spreader|Spreader]] matrix orders, [[arb|Arb builder]], [[hedge|Hedge]] simulation, [[twap|TWAP]] slicing, [[one-tap|One-tap buy]].",
+              "Found that the [[uicontext|UIContext]] passed to the AI for chat orders could not express [[batch-order|batch orders]] or [[tp-sl|TP/SL]], wrote the fix as an [[rfc|RFC]], and changed the protocol with the backend team. Proposed '@account' tags to route each instrument to its own account.",
+              "Showed that merging positions from several accounts into one table is unsafe because server messages carry no account identifier, and documented it as a backend change request."
+            ]
+          },
           {
             "title": "Browser memory optimization (3.8GB → 1GB)",
             "period": "2026.04 – 2026.08",
             "problem": "Real-time streams, widget state, TradingView iframes, and query caches accumulated until Chrome sat at 3.8GB, slowing the UI and eventually killing the tab.",
             "approach": [
-              "Split orderbook and position-table updates down to row and symbol granularity to remove redundant re-renders and allocations.",
+              "Split [[orderbook]] and [[position-table|position table]] updates down to row and symbol granularity to remove redundant re-renders and allocations.",
               "Replaced AG Grid with an in-house DataTable with row memoization, virtualization, and clean unsubscribe paths.",
-              "Three-stage runtime recovery: partial resubscribe, then cache invalidation, then reload when returning from a background tab. Reloads are blocked while an order is being entered."
+              "Three-stage [[runtime-recovery]]: partial resubscribe, then cache invalidation, then reload when returning from a background tab. Reloads are blocked while an order is being entered."
             ]
           },
           {
             "title": "Translate-based in-house grid system",
             "period": "2026.06 – 2026.09",
-            "problem": "react-grid-layout recalculated layout and re-rendered React on every mousemove during resize, saturating the CPU.",
+            "problem": "[[react-grid-layout]] recalculated layout and re-rendered React on every mousemove during resize, saturating the CPU.",
             "approach": [
-              "dnd-kit plus imperative DOM transform (translate) updates so React is out of the loop while dragging.",
+              "dnd-kit plus imperative DOM transform ([[translate-grid|translate]]) updates so React is out of the loop while dragging.",
               "Grid-to-pixel math isolated in pure functions and pinned with tests.",
               "Widget stretch and shareable page layouts with auto-generated OG images."
             ]
@@ -119,9 +132,9 @@
             "period": "2026.01 – 2026.09",
             "problem": "A small team had to push MVP features across 18 domains at once, and AI output quality varied widely on a large codebase.",
             "approach": [
-              "Repository conventions, architecture, and domain rules fixed through context injection so any agent works to the same standard.",
-              "Claude as planner, Codex as reviewer: design, implementation, and review separated, with plan/design documents and gap analysis as the audit trail.",
-              "react-doctor cleanups run as a routine so debt from feature integration does not accumulate."
+              "Repository conventions, architecture, and domain rules fixed through [[context-injection]] so any agent works to the same standard.",
+              "Claude as planner, Codex as reviewer ([[planner-reviewer]]): design, implementation, and review separated, with plan/design documents and gap analysis as the audit trail.",
+              "[[react-doctor]] cleanups run as a routine so debt from feature integration does not accumulate."
             ]
           },
           {
@@ -129,25 +142,17 @@
             "period": "2026.06 – 2026.09",
             "problem": "Design changes and translated copy were applied by hand, so every release shipped with omissions and mismatches.",
             "approach": [
-              "Figma MCP reads the design source directly to apply component changes.",
-              "An i18n agent finds missing keys, translates and registers them, and syncs with Lokalise. Localization runs on next-intl."
+              "[[figma-mcp|Figma MCP]] reads the design source directly to apply component changes.",
+              "An [[i18n]] agent finds missing keys, translates and registers them, and syncs with Lokalise. Localization runs on next-intl."
             ]
           },
           {
             "title": "Chart library migration (lightweight-charts → TradingView)",
             "period": "2026.03 – 2026.09",
-            "problem": "The backend speaks gRPC-over-HTTP plus WebSocket rather than UDF, so the stock datafeed did not fit.",
+            "problem": "The backend speaks [[protobuf|Protobuf]] over HTTP plus [[websocket|WebSocket]] rather than a standard feed, so TradingView's stock [[datafeed|Datafeed]] did not fit.",
             "approach": [
-              "Provider-pattern custom Datafeed. Position and execution overlays, live quote push, per-account overlays.",
-              "Custom indicators (OI profile, visible-range profile, cross-exchange studies) and a range-preset toolbar."
-            ]
-          },
-          {
-            "title": "AI chat orders and multi-exchange widgets",
-            "period": "2025.12 – 2026.09",
-            "approach": [
-              "UIContext v2 RFC and an @account-tag routing proposal so chat orders can express batches, triggers, and TP/SL; negotiated with the backend team.",
-              "Spreader, Arb builder, Hedge simulation, RFQ, TWAP, One-tap buy. Documented the protocol limits of multi-account aggregation as a backend change request."
+              "Provider-pattern custom [[datafeed|Datafeed]]. Position and execution overlays, live quote push, per-account overlays.",
+              "Custom indicators ([[oi-profile|OI profile]], visible-range profile, cross-exchange studies) and a range-preset toolbar. Analytics widgets such as [[fedwatch|FedWatch]], an economic calendar, and [[svi|SVI]] parameters."
             ]
           }
         ],
@@ -159,29 +164,30 @@
           "Tooling": "Playwright, Bun test, Lokalise, PostHog, OpenTelemetry, AWS Amplify"
         }
       },
-      "project": "OrderX"
+      "project": "OrderX",
+      "url": "https://app.orderx.com"
     },
     {
       "id": "playpsweeper",
       "company": "YGG",
-      "url": "https://playpsweeper.com",
+      "url": "https://dragon-sweeper-web.vercel.app/",
       "role": "Frontend & Contract Engineer",
       "start": "2025-08",
       "end": "2026-07",
       "current": false,
-      "oneLiner": "A roguelike minesweeper on the Abstract chain. Partnered with YGG Play and Raito.",
+      "oneLiner": "A roguelike minesweeper on the [[abstract|Abstract chain]]. Partnered with YGG Play and Raito. The service has ended; the link is a build on the original frontend core.",
       "bullets": [
-        "The payment contract I designed processed 19,939 purchases with zero failures: 72,500 USDC, 25,000 USDT, 104.65 ETH, 50,616,446 YGG.",
-        "Upgradeable proxies let token-economy changes for repurchase and retention ship weekly without redeploying. Externally audited, live on mainnet.",
-        "Built and ran the client and in-game logic solo using context injection. Session keys record in-game actions on-chain without a signature each time."
+        "The payment contract I designed processed 19,939 purchases with zero failures, about $1.5M in total (72,500 USDC, 25,000 USDT, 104.65 ETH, 50,616,446 YGG at Sep 2026 prices).",
+        "[[uups|Upgradeable proxies]] let token-economy changes for repurchase and retention ship weekly without redeploying. Externally audited, ran on mainnet.",
+        "Built and ran the client and in-game logic solo using [[context-injection]]. [[session-key|Session keys]] record in-game actions on-chain without a signature each time."
       ],
       "detail": {
-        "description": "The Waifu Sweeper team under Yield Guild Games (YGG). Started as Princess Sweeper, later rebranded to Waifu Sweeper / Playpsweeper. I owned the entire web client and contract stack and shipped design changes (reward multipliers, season leaderboards, Gold Mine mode, revive mode) on a weekly cadence.",
+        "description": "The Waifu Sweeper team under Yield Guild Games (YGG). Started as Princess Sweeper, later rebranded to Waifu Sweeper / Playpsweeper. I owned the entire web client and contract stack and shipped design changes (reward multipliers, season leaderboards, Gold Mine mode, revive mode) on a weekly cadence. The service has ended; the link is a build on the original frontend core logic.",
         "impact": [
-          "19,939 payments through the shop contract with zero failures: 72,500 USDC, 25,000 USDT, 104.65 ETH, 50,616,446 YGG.",
-          "Deployed to Abstract mainnet after an external audit (2025.12). 94 Hardhat tests cover purchases, the oracle, NFTs, and the session tracker.",
-          "Upgradeable proxies allowed token-economy changes (reward multipliers, season leaderboards, Gold Mine, revive mode) without redeploys, supporting repurchase and retention.",
-          "Owned the whole client and contract stack solo. Bot traffic blocked with Cloudflare Turnstile."
+          "19,939 payments through the shop contract with zero failures, about $1.5M in total: 72,500 USDC, 25,000 USDT, 104.65 ETH (≈$266,048), 50,616,446 YGG (≈$1,144,263). ETH and YGG converted at 2026-09-12 prices.",
+          "Deployed to [[abstract|Abstract]] mainnet after an external audit (2025.12). 94 Hardhat tests cover purchases, the oracle, NFTs, and the session tracker.",
+          "[[uups|Upgradeable proxies]] allowed token-economy changes (reward multipliers, season leaderboards, Gold Mine, revive mode) without redeploys, supporting repurchase and retention.",
+          "Owned the whole client and contract stack solo. Bot traffic blocked with [[turnstile|Cloudflare Turnstile]]."
         ],
         "projects": [
           {
@@ -189,8 +195,8 @@
             "period": "2025.09 – 2026.07",
             "problem": "The token economy (reward multipliers, repurchase incentives, seasonal events) changed weekly, and every touch of the payment contract put user funds at risk.",
             "approach": [
-              "ShopManager, NFT, and PriceFeed run behind UUPS proxies with a storage-layout review fixed into the deploy checklist. New capabilities such as the session tracker live in separate contracts rather than new proxy slots.",
-              "Game rules, entities, and reward logic specified through context injection so in-game logic changes ship quickly and consistently.",
+              "ShopManager, NFT, and PriceFeed run behind [[uups|UUPS proxies]] with a [[storage-layout]] review fixed into the deploy checklist. New capabilities such as the session tracker live in separate contracts rather than new proxy slots.",
+              "Game rules, entities, and reward logic specified through [[context-injection]] so in-game logic changes ship quickly and consistently.",
               "Result: 19,939 payments with no failures and weekly design releases."
             ]
           },
@@ -199,17 +205,17 @@
             "period": "2026.05 – 2026.06",
             "problem": "Repeated actions such as opening tiles, defeating monsters, finding items, and reviving had to be recorded on-chain without a wallet signature every time.",
             "approach": [
-              "A hook that creates, stores, and restores a 24-hour session key with a fee limit and per-contract, per-selector call policies.",
+              "A hook that creates, stores, and restores a 24-hour [[session-key|session key]] with a fee limit and per-contract, per-selector call policies.",
               "A WaifuGameSessionTracker contract that validates ordering with a per-player session id and action nonce.",
-              "Passed the tracker address as an argument instead of adding storage to the already-deployed ShopManager proxy, and documented why."
+              "Passed the tracker address as an argument instead of adding storage to the already-deployed ShopManager proxy ([[storage-layout]] safety), and documented why."
             ]
           },
           {
             "title": "NFT gacha and energy-pack shop",
             "period": "2025.09 – 2025.12",
             "approach": [
-              "ShopManager (UUPS): ETH/USDC/USDT/YGG payments with explicit per-token decimals, EIP-712 signature verification with nonce replay protection, slippage handling.",
-              "PriceFeed (UUPS): Pyth ETH/USD feed, confidence checks, cent-denominated pack pricing.",
+              "ShopManager ([[uups|UUPS]]): ETH/USDC/USDT/YGG payments with explicit per-token decimals, [[eip712|EIP-712]] signature verification with nonce replay protection, slippage handling.",
+              "PriceFeed (UUPS): [[pyth|Pyth]] ETH/USD feed, confidence checks, cent-denominated pack pricing.",
               "WaifuSweeperNFT (UUPS ERC721): batch minting up to 30, paginated tokensOfOwner to stay under gas limits.",
               "Client: bundles Pyth price updates into the transaction, NFT as a payment method, YGG discounts."
             ]
@@ -243,7 +249,7 @@
       "current": false,
       "oneLiner": "Web3 arm of game studio 111percent. Reward app, NFT community, $GM token claim site.",
       "bullets": [
-        "Designed the token-claim dApp to keep wallet connection and transactions stable through a TGE with 10k+ daily spikes. Listed on Binance Alpha, Coinone, Bitget.",
+        "Designed the token-claim dApp to keep wallet connection and transactions stable through a [[tge|TGE]] with 10k+ daily spikes. Listed on Binance Alpha, Coinone, Bitget.",
         "Native app (React Native, Expo) and PWA for the ad-reward product, NFT verification and staking community site, upgradeable contracts for a betting game."
       ],
       "detail": {
@@ -355,7 +361,8 @@
           "Infra": "Vercel, GitHub Actions"
         }
       },
-      "project": "Yooldo"
+      "project": "Yooldo",
+      "url": "https://www.yooldo.gg"
     },
     {
       "id": "bluepoint",

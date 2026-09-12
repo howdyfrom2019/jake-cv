@@ -1,3 +1,4 @@
+import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
 import { getCv, getUi, periodMonth } from '@/lib/data'
 import type { Locale } from '@/lib/types'
@@ -28,7 +29,9 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
           )}
           <span className="ml-3 text-[1.05rem] font-normal text-muted">{e.role}</span>
         </h1>
-        <p className="mt-4 leading-relaxed text-muted">{d.description}</p>
+        <p className="mt-4 leading-relaxed text-muted">
+          <RichText text={d.description} locale={locale} />
+        </p>
         {e.contractUrl && (
           <p className="mt-2 text-sm text-dim">
             <a href={e.contractUrl} target="_blank" rel="noreferrer" className="u">
@@ -43,7 +46,9 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
           <h2 className="h rule mb-5">{ui.impact}</h2>
           <ul className="bullets space-y-1.5 leading-relaxed">
             {d.impact.map((i) => (
-              <li key={i}>{i}</li>
+              <li key={i}>
+                <RichText text={i} locale={locale} />
+              </li>
             ))}
           </ul>
         </section>
@@ -61,12 +66,14 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
               {p.problem && (
                 <p className="mt-2 leading-relaxed text-muted">
                   <span className="k">{ui.problem} · </span>
-                  {p.problem}
+                  <RichText text={p.problem} locale={locale} />
                 </p>
               )}
               <ul className="bullets mt-2 space-y-1 text-[0.95rem] leading-relaxed">
                 {p.approach.map((a) => (
-                  <li key={a}>{a}</li>
+                  <li key={a}>
+                    <RichText text={a} locale={locale} />
+                  </li>
                 ))}
               </ul>
             </article>

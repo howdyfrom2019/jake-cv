@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Icon } from '@/components/icons'
+import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
 import { SOURCE_LABEL, downloadPath, getCv, getUi, localePath, period, posts } from '@/lib/data'
 import type { Locale } from '@/lib/types'
@@ -67,15 +68,30 @@ export function Home({ locale }: { locale: Locale }) {
                   <Link href={localePath(locale, `/work/${e.id}`)} className="text-[1.05rem] font-semibold hover:text-key">
                     {e.company}
                   </Link>
-                  {e.project && <span className="ml-2 text-[1.05rem]">· {e.project}</span>}
+                  {e.project && (
+                    <span className="ml-2 text-[1.05rem]">
+                      ·{' '}
+                      {e.url ? (
+                        <a href={e.url} target="_blank" rel="noreferrer" className="u">
+                          {e.project}
+                        </a>
+                      ) : (
+                        e.project
+                      )}
+                    </span>
+                  )}
                   <span className="ml-2 text-muted">{e.role}</span>
                 </p>
                 <span className="shrink-0 text-sm text-dim">{period(e.start, e.end, e.current, ui.now)}</span>
               </div>
-              <p className="mt-1.5 text-muted">{e.oneLiner}</p>
+              <p className="mt-1.5 text-muted">
+                <RichText text={e.oneLiner} locale={locale} />
+              </p>
               <ul className="bullets mt-2 space-y-1 text-[0.95rem] leading-relaxed">
                 {e.bullets.map((b) => (
-                  <li key={b}>{b}</li>
+                  <li key={b}>
+                    <RichText text={b} locale={locale} />
+                  </li>
                 ))}
               </ul>
               <Link href={localePath(locale, `/work/${e.id}`)} className="k u mt-2 inline-block text-sm">
@@ -97,7 +113,9 @@ export function Home({ locale }: { locale: Locale }) {
                     </Link>
                     {e.project && <span className="ml-2">· {e.project}</span>}
                     <span className="ml-2 text-muted">{e.role}</span>
-                    <span className="ml-2 text-dim">— {e.oneLiner}</span>
+                    <span className="ml-2 text-dim">
+                      — <RichText text={e.oneLiner} locale={locale} />
+                    </span>
                   </span>
                   <span className="shrink-0 text-sm text-dim">{period(e.start, e.end, e.current, ui.now)}</span>
                 </li>

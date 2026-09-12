@@ -47,16 +47,16 @@
 
 ### SunLabs AG · OrderX · FE Part Lead
 
-**2025.10 ~ 재직중 (12개월)** · 원격 근무
+**2025.10 ~ 재직중 (12개월)** · 원격 근무 · https://app.orderx.com
 
 크립토 파생상품(옵션·선물·현물) 멀티 거래소 트레이딩 터미널 OrderX의 프론트엔드를 초기 세팅부터 리드하고 있습니다. 커스터마이즈 가능한 위젯 대시보드, 실시간 마켓/계정 스트림, 차트, 주문 입력, 포트폴리오, 분석 위젯, AI 채팅 기반 주문 워크플로우를 포함합니다.
 
 **성과**
 
-- 파일럿 + 프라이빗 베타 단계에서 $10B 명목 거래 처리, $1M 매출. 대형 멀티스트랫 펀드 파일럿 운영.
-- 브라우저 메모리 상시 점유 3.8GB → 1GB 내외로 최적화. 하루 종일 켜 두는 트레이더 워크플로우에서 리로드 없이 운용.
-- react-grid-layout의 CPU 레이아웃 계산을 translate 기반 자체 그리드로 교체해 드래그·리사이즈 UX 개선.
-- Context injection과 Claude–Codex planner/reviewer 구조, react-doctor 클린업으로 AI 워크플로우를 정착시켜 MVP 기능 플로우 완성. Figma MCP + i18n 에이전트로 다국어 파이프라인 구축.
+- 파일럿 + 프라이빗 베타 단계에서 명목 거래 $10B 처리, $1M 매출. 대형 멀티스트랫 펀드 파일럿 운영.
+- 주문 실행과 멀티 거래소(Deribit, Hyperliquid, Lighter, Bybit, Binance, OPRA, CME, IBKR) 지원을 프론트에서 통합. 배치 주문, 앵커 가격 기반 미리보기, 계정 자동 해석, 거래소별 종목 표기의 구조화. TP/SL·RFQ·Spreader·Arb·Hedge·TWAP·One-tap 주문 방식을 그 위에 구축.
+- 브라우저 메모리 상시 점유 3.8GB → 1GB 내외. react-grid-layout의 CPU 계산을 translate 기반 자체 그리드로 교체.
+- Context injection과 Claude–Codex planner/reviewer 구조, react-doctor 클린업으로 AI 워크플로우 정착. Figma MCP + i18n 에이전트 다국어 파이프라인.
 
 **주요 업무**
 
@@ -85,15 +85,16 @@
 
 ### YGG (Yield Guild Games) · Waifu Sweeper · Frontend & Smart Contract Engineer
 
-**2025.08 ~ 2026.07 (12개월)** · 원격 · https://playpsweeper.com
+**2025.08 ~ 2026.07 (12개월)** · 원격
 
 Abstract 체인 위에서 동작하는 로그라이크 지뢰찾기 온체인 게임 Waifu Sweeper(프로젝트 초기명 Princess Sweeper, 이후 Playpsweeper로 리브랜딩)의 웹 클라이언트와 스마트 컨트랙트 전체를 단독으로 설계·구현·운영했습니다. YGG Play, Raito와 파트너십을 맺고 Abstract 메인넷에 배포했습니다.
 
 **성과**
 
-- 직접 설계한 결제 컨트랙트로 19,939건의 결제를 한 건의 실패 없이 처리. USDC 72,500 · USDT 25,000 · ETH 104.65 · YGG 50,616,446. (https://abscan.org/address/0x465738e6d8ded1384c3e8402658257d4ae8ed17d)
-- 업그레이더블 프록시 운영으로 토큰 경제 순환, 재구매, 재방문율을 위한 변경을 재배포 없이 매주 반영. 외부 감사(2025.12) 반영 후 Abstract 메인넷 운영.
+- 직접 설계한 결제 컨트랙트로 19,939건의 결제를 한 건의 실패 없이 처리. 합계 약 $1.5M 상당(USDC 72,500 · USDT 25,000 · ETH 104.65 ≈ $266K · YGG 50,616,446 ≈ $1.14M, 2026.09.12 시세 환산). https://abscan.org/address/0x465738e6d8ded1384c3e8402658257d4ae8ed17d
+- 업그레이더블 프록시 운영으로 토큰 경제 순환·재구매·재방문율 변경을 재배포 없이 매주 반영. 외부 감사(2025.12) 후 Abstract 메인넷 운영.
 - Context injection으로 인게임 로직과 웹 클라이언트를 단독 구현·운영. 94개 Hardhat 테스트, Cloudflare Turnstile 봇 차단.
+- 서비스 종료. 초기 코어 로직 기반 빌드: https://dragon-sweeper-web.vercel.app/
 
 **주요 업무 (프론트엔드)**
 
@@ -155,7 +156,7 @@ Abstract 체인 위에서 동작하는 로그라이크 지뢰찾기 온체인 �
 
 **2023.04 ~ 2024.10 (1년 7개월)**
 
-Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo와 게임 온보딩을 지원했습니다.
+Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo(https://www.yooldo.gg)와 게임 온보딩을 지원했습니다.
 
 - 블록체인 게이밍 플랫폼에 90만 명 이상의 유저를 온보딩.
 - NFT 구매·검증 UX 설계 참여 등으로 월 최대 15만 달러 이상의 프로젝트 수익화.
