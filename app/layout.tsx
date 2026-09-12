@@ -10,7 +10,18 @@ export const metadata: Metadata = {
   description: en.profile.headline,
   openGraph: { siteName: 'Jake Kim', type: 'website' },
   twitter: { card: 'summary', creator: '@b_cryptojake' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  manifest: '/site.webmanifest',
 }
+
+export const viewport = { themeColor: '#0b0e10' }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -183,7 +183,9 @@ export function Home({ locale }: { locale: Locale }) {
         </ul>
       </section>
 
-      <p className="mt-20 text-xs text-dim">
+      <p className="mt-20 flex items-center gap-2 text-xs text-dim">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/favicon-badge.png" alt="" width={16} height={16} className="rounded-sm opacity-80" />
         {ui.updated} {cv.meta.updatedAt} · {profile.location}
       </p>
     </Shell>
