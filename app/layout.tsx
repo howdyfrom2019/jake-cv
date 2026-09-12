@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 }
 
+export const viewport = { themeColor: '#0b0e10' }
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
