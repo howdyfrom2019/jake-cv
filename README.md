@@ -47,6 +47,15 @@ bun post:list
 
 OG 메타(제목, 요약, 발행일)를 읽어 `data/posts.json`에 넣고 호스트로 출처(naver, tistory, paragraph, medium, velog, brunch)를 판별한다. OG가 없으면 `--title "..." --date YYYY-MM-DD`로 직접 지정. 파일을 손으로 편집해도 된다.
 
+## AI 에이전트 친화 (llms.txt)
+
+[llmstxt.org](https://llmstxt.org/) 스펙을 따라 두 파일을 요청 시점에 생성합니다.
+
+- `/llms.txt` — 소개, 경력 목록과 링크, PDF, 글 목록을 요약한 인덱스.
+- `/llms-full.txt` — 두 언어 전체 이력·프로젝트·성과를 한 번에 담은 전문(全文).
+
+둘 다 `lib/llms.ts`가 `data/cv.*.json`에서 그때그때 만들어 내므로 데이터를 바꾸면 재배포만으로 갱신됩니다. `app/robots.ts`와 `app/sitemap.ts`도 함께 있고, `<head>`에 `<link rel="llms.txt">`로 링크해 뒀습니다.
+
 ## 배포
 
 Vercel에 그대로 올린다. `lib/data.ts`의 `SITE_URL`을 실제 도메인으로 바꾼다. PDF는 빌드 산출물이 아니라 `public/`에 커밋된 파일이므로, 데이터 수정 후 `bun run pdf`를 돌리고 함께 커밋한다.
