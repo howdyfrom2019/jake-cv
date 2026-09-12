@@ -1,0 +1,453 @@
+{
+  "meta": {
+    "version": "2026.09",
+    "updatedAt": "2026-09-12"
+  },
+  "profile": {
+    "name": "김성주",
+    "altName": "Jake Kim",
+    "headline": "가장 트렌디한 금융 소프트웨어를 만들고 있습니다.",
+    "intro": [
+      "크립토에서 시작해 dApp, 온체인 게임, 그리고 기관용 트레이딩 터미널까지 만들어온 AI-native 프로덕트 엔지니어입니다.",
+      "지금은 크립토 파생상품 멀티 거래소 터미널 OrderX를 만들고 있습니다. Claude와 Codex를 planner/reviewer로 활용하고, 직접 설계한 시스템을 실제 서비스까지 운영하며 작은 팀으로 큰 제품을 만드는 것을 좋아합니다."
+    ],
+    "tagline": [
+      {
+        "label": "Product Engineer",
+        "href": "#orderx"
+      },
+      {
+        "label": "Crypto-native Builder",
+        "href": "#playpsweeper"
+      },
+      {
+        "label": "AI-native Developer",
+        "href": "/work/orderx"
+      }
+    ],
+    "email": "jiovana.jake@gmail.com",
+    "location": "경기 용인 · 원격 근무",
+    "links": [
+      {
+        "type": "github",
+        "label": "GitHub",
+        "url": "https://github.com/howdyfrom2019"
+      },
+      {
+        "type": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/sungjoo-kim-jake/"
+      },
+      {
+        "type": "x",
+        "label": "X",
+        "url": "https://x.com/b_cryptojvke"
+      },
+      {
+        "type": "telegram",
+        "label": "Telegram",
+        "url": "https://t.me/b_cryptojvke"
+      }
+    ]
+  },
+  "stack": [
+    "TypeScript",
+    "React 19",
+    "Next.js 15",
+    "Vite",
+    "Bun",
+    "Jotai",
+    "TanStack Query",
+    "Tailwind v4",
+    "WebSocket / Protobuf",
+    "TradingView Charting Library",
+    "dnd-kit",
+    "Solidity",
+    "Hardhat",
+    "OpenZeppelin UUPS",
+    "Viem / Wagmi",
+    "Abstract Global Wallet",
+    "React Native / Expo",
+    "Vercel",
+    "AWS"
+  ],
+  "experiences": [
+    {
+      "id": "orderx",
+      "company": "SunLabs AG",
+      "role": "FE Part Lead",
+      "start": "2025-10",
+      "end": null,
+      "current": true,
+      "oneLiner": "크립토 파생상품 멀티 거래소 트레이딩 터미널. 파일럿·프라이빗 베타 단계에서 $10B 명목 거래 처리, $1M 매출.",
+      "bullets": [
+        "브라우저 메모리 점유가 상시 3.8GB까지 오르던 구조를 1GB 내외로 낮춰 장시간 운용이 가능한 터미널로 만듦.",
+        "react-grid-layout의 CPU 레이아웃 계산을 translate 기반 자체 그리드로 바꿔 차트가 많은 대시보드에서도 드래그·리사이즈가 끊기지 않게 함.",
+        "Context injection과 Claude–Codex planner/reviewer 구조, react-doctor 클린업으로 AI 워크플로우를 팀에 정착시켜 MVP 기능 플로우를 완성. Figma MCP + i18n 에이전트로 다국어 파이프라인 구축."
+      ],
+      "detail": {
+        "description": "옵션·선물·현물을 여러 거래소에서 한 화면으로 다루는 트레이딩 터미널입니다. 대형 멀티스트랫 펀드와 파일럿을 진행했고, 프라이빗 베타 단계에서 $10B 명목 거래를 처리하며 $1M 매출을 냈습니다. 프론트엔드를 초기 세팅부터 리드하며 18개 피처 도메인을 설계했습니다.",
+        "impact": [
+          "파일럿 + 프라이빗 베타 단계에서 $10B 명목 거래 처리, $1M 매출. 대형 멀티스트랫 펀드 파일럿 운영.",
+          "브라우저 메모리 상시 점유 3.8GB → 1GB 내외. 하루 종일 켜 두는 트레이더 워크플로우에서 리로드 없이 운용 가능.",
+          "그리드 엔진 교체로 드래그·리사이즈 중 React 리렌더 제거. 차트 위젯 다수 배치 시에도 UX 저하 없음.",
+          "AI 워크플로우 정착으로 소수 인원이 MVP 기능 플로우 전체를 완성. 다국어 서비스는 Figma → i18n 에이전트 파이프라인으로 자동화."
+        ],
+        "projects": [
+          {
+            "title": "브라우저 메모리 최적화 (3.8GB → 1GB)",
+            "period": "2026.04 – 2026.08",
+            "problem": "실시간 스트림, 위젯 상태, TradingView iframe, 쿼리 캐시가 누적되며 크롬 메모리가 상시 3.8GB까지 올라가 장시간 사용 시 UI가 느려지고 탭이 죽었습니다.",
+            "approach": [
+              "오더북·포지션 테이블의 갱신 단위를 행/심볼 단위로 쪼개 불필요한 리렌더와 객체 생성을 제거.",
+              "AG Grid를 자체 DataTable로 교체하고 행 메모이제이션, 가상화, 구독 해제 경로를 정리.",
+              "3단계 런타임 복구 시스템으로 백그라운드 탭 복귀 시 부분 재구독 → 캐시 무효화 → 리로드를 단계적으로 수행. 주문 입력 중에는 리로드 차단."
+            ]
+          },
+          {
+            "title": "translate 기반 자체 그리드 시스템",
+            "period": "2026.06 – 2026.09",
+            "problem": "react-grid-layout이 리사이즈 중 매 mousemove마다 레이아웃을 재계산하고 React 리렌더를 유발해 CPU를 잡아먹었습니다.",
+            "approach": [
+              "dnd-kit + 명령형 DOM transform(translate) 업데이트로 드래그 중에는 React를 거치지 않도록 설계.",
+              "grid ↔ pixel 변환을 순수 함수로 분리하고 테스트로 고정.",
+              "위젯 stretch, 공유 가능한 페이지 레이아웃(OG 이미지 자동 생성) 추가."
+            ]
+          },
+          {
+            "title": "AI 워크플로우 도입",
+            "period": "2026.01 – 2026.09",
+            "problem": "소수 인원으로 18개 도메인의 MVP 기능을 동시에 밀어야 했고, 컨텍스트가 큰 코드베이스에서 AI 산출물의 품질 편차가 컸습니다.",
+            "approach": [
+              "레포 컨벤션·아키텍처·도메인 규칙을 context injection으로 고정해 어떤 에이전트가 붙어도 같은 기준으로 작업하게 함.",
+              "Claude(planner) – Codex(reviewer) 구조로 설계 → 구현 → 리뷰를 분리. Plan/Design 문서와 Gap 분석을 남겨 검증.",
+              "react-doctor 기반 클린업을 정기 루틴으로 돌려 기능 통합 시 누적되는 부채를 제거."
+            ]
+          },
+          {
+            "title": "Figma MCP + i18n 에이전트 파이프라인",
+            "period": "2026.06 – 2026.09",
+            "problem": "디자인 변경과 다국어 문구 반영이 수작업이라 릴리스마다 누락과 불일치가 생겼습니다.",
+            "approach": [
+              "Figma MCP로 디자인 소스를 직접 읽어 컴포넌트 변경을 반영.",
+              "i18n 에이전트가 누락 키를 찾아 번역·등록하고 Lokalise와 동기화. next-intl 기반 다국어 서비스 운영."
+            ]
+          },
+          {
+            "title": "차트 라이브러리 마이그레이션 (lightweight-charts → TradingView)",
+            "period": "2026.03 – 2026.09",
+            "problem": "백엔드가 UDF가 아닌 gRPC-over-HTTP + WebSocket이라 기존 datafeed를 쓸 수 없었습니다.",
+            "approach": [
+              "Provider 패턴의 커스텀 Datafeed 작성. 포지션/체결 오버레이, 실시간 quote push, 계정별 오버레이.",
+              "커스텀 인디케이터(OI 프로파일, visible range 프로파일, 크로스 거래소 스터디)와 범위 프리셋 툴바."
+            ]
+          },
+          {
+            "title": "AI 채팅 주문과 멀티 거래소 위젯",
+            "period": "2025.12 – 2026.09",
+            "approach": [
+              "UIContext v2 RFC와 @account 태그 기반 계정 라우팅 제안으로 채팅 주문이 배치·트리거·TP/SL을 표현하도록 백엔드와 협의.",
+              "Spreader, Arb 빌더, Hedge 시뮬레이션, RFQ, TWAP, One-tap buy. 멀티 계정 집계의 프로토콜 한계를 분석해 변경 요구사항으로 정리."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "Next.js 15, React 19, TypeScript, Bun, Tailwind v4, Radix UI, Jotai, TanStack Query, React Hook Form, Zod, dnd-kit, framer-motion, react-virtuoso",
+          "Realtime": "Protocol Buffers (ts-proto) over HTTP + WebSocket",
+          "Chart": "TradingView Charting Library v31, TitanCharts, ECharts",
+          "AI": "Vercel AI SDK, assistant-ui, ElevenLabs",
+          "Tooling": "Playwright, Bun test, Lokalise, PostHog, OpenTelemetry, AWS Amplify"
+        }
+      },
+      "project": "OrderX"
+    },
+    {
+      "id": "playpsweeper",
+      "company": "YGG",
+      "url": "https://playpsweeper.com",
+      "role": "Frontend & Contract Engineer",
+      "start": "2025-08",
+      "end": "2026-07",
+      "current": false,
+      "oneLiner": "Abstract 체인 위의 로그라이크 지뢰찾기 온체인 게임. YGG Play, Raito 파트너십.",
+      "bullets": [
+        "직접 설계한 결제 컨트랙트로 19,939건의 결제를 한 건의 실패 없이 처리. USDC 72,500 · USDT 25,000 · ETH 104.65 · YGG 50,616,446.",
+        "업그레이더블 프록시로 토큰 경제 순환, 재구매, 재방문율을 위한 운영 변경을 컨트랙트 재배포 없이 매주 반영. 외부 감사 후 메인넷 운영.",
+        "Context injection으로 인게임 로직과 클라이언트를 혼자 구현·운영. 세션 키로 게임 중 액션을 서명 없이 온체인 기록."
+      ],
+      "detail": {
+        "description": "Yield Guild Games(YGG) 산하 Waifu Sweeper 팀. 프로젝트 초기명은 Princess Sweeper, 이후 Waifu Sweeper / Playpsweeper로 리브랜딩했습니다. 웹 클라이언트와 스마트 컨트랙트 전체를 혼자 맡았고, 기획 변경(보상 배율, 시즌 리더보드, Gold Mine 모드, revive 모드)을 매주 단위로 배포했습니다.",
+        "impact": [
+          "결제 컨트랙트 19,939건 무실패 처리. USDC 72,500 · USDT 25,000 · ETH 104.65 · YGG 50,616,446 결제.",
+          "외부 감사(2025.12) 반영 후 Abstract 메인넷 배포. 94개 Hardhat 테스트로 구매·오라클·NFT·세션 트래커 시나리오 검증.",
+          "업그레이더블 프록시 운영으로 보상 배율, 시즌 리더보드, Gold Mine, revive 모드 같은 토큰 경제 변경을 재배포 없이 반영. 재구매·재방문율 개선에 기여.",
+          "웹 클라이언트와 컨트랙트 전체를 단독 개발·운영. Cloudflare Turnstile로 봇 트래픽 차단."
+        ],
+        "projects": [
+          {
+            "title": "운영 방법론: 업그레이더블 프록시와 context injection",
+            "period": "2025.09 – 2026.07",
+            "problem": "토큰 경제(보상 배율, 재구매 유도, 시즌 이벤트)를 매주 바꿔야 했지만, 결제 컨트랙트를 건드릴 때마다 사용자 자금 리스크가 생겼습니다.",
+            "approach": [
+              "ShopManager·NFT·PriceFeed를 UUPS 프록시로 두고 storage layout 검토를 배포 체크리스트로 고정. 새 기능(세션 트래커)은 프록시에 슬롯을 추가하지 않고 별도 컨트랙트로 분리.",
+              "게임 규칙·엔티티·보상 로직을 context injection으로 명세화해 인게임 로직 변경을 빠르고 일관되게 구현.",
+              "결과: 19,939건 결제 무실패, 기획 변경 주 단위 배포."
+            ]
+          },
+          {
+            "title": "AGW 세션 키 기반 게임 세션",
+            "period": "2026.05 – 2026.06",
+            "problem": "타일 오픈, 몬스터 처치, 아이템 획득, 부활 같은 반복 액션을 매번 지갑 서명 없이 온체인에 기록해야 했습니다.",
+            "approach": [
+              "24시간 세션 키(수수료 한도, 컨트랙트·셀렉터 단위 call policy)를 생성·로컬 저장·복구하는 훅 설계.",
+              "WaifuGameSessionTracker 컨트랙트에서 플레이어별 세션 ID와 액션 nonce로 순서 검증.",
+              "이미 배포된 ShopManager 프록시의 storage layout을 건드리지 않도록 tracker 주소를 인자로 넘기는 설계를 택하고 문서화."
+            ]
+          },
+          {
+            "title": "NFT 가챠박스 · 에너지팩 상점",
+            "period": "2025.09 – 2025.12",
+            "approach": [
+              "ShopManager (UUPS): ETH/USDC/USDT/YGG 다중 결제, 토큰별 decimals 명시 관리, EIP-712 서명 검증 + nonce 리플레이 방지, 슬리피지 처리.",
+              "PriceFeed (UUPS): Pyth ETH/USD 피드 통합, 신뢰도 검증, 센트 단위 팩 가격 관리.",
+              "WaifuSweeperNFT (UUPS ERC721): 최대 30개 배치 민팅, gas limit 회피용 페이지네이션 tokensOfOwner.",
+              "프론트: Pyth 가격 업데이트 데이터를 트랜잭션에 동봉, NFT 결제 수단, YGG 할인."
+            ]
+          },
+          {
+            "title": "라이브 운영 도구와 시즌 시스템",
+            "period": "2026.01 – 2026.07",
+            "approach": [
+              "시즌 리더보드, Gold Mine 리더보드, 보상 대시보드, revive 모드, 레퍼럴 코드 검증.",
+              "점검 모드 페이지 + 서비스 스케줄 설정, 기능별 feature flag / 날짜 플래그.",
+              "GA4 이벤트 설계, Twitter Pixel, SEO/OG 최적화, BGM/효과음 시스템, 이미지 프리로드."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "React 19, TypeScript, Vite 7, Tailwind v4, Radix UI, Jotai, TanStack Query, Framer Motion, react-router 7",
+          "Web3": "Wagmi, Viem, Ethers v6, RainbowKit, Abstract Global Wallet (sessions)",
+          "Contracts": "Solidity, Hardhat, OpenZeppelin Upgradeable v5, Pyth SDK, TypeChain",
+          "Infra": "Vercel, Cloudflare Turnstile, GA4"
+        }
+      },
+      "project": "Waifu Sweeper",
+      "contractUrl": "https://abscan.org/address/0x465738e6d8ded1384c3e8402658257d4ae8ed17d"
+    },
+    {
+      "id": "gomble",
+      "company": "111퍼센트",
+      "role": "Frontend Engineer",
+      "start": "2025-04",
+      "end": null,
+      "current": false,
+      "oneLiner": "게임 스튜디오 111퍼센트의 Web3 사업부. 리워드앱, NFT 커뮤니티, $GM 토큰 클레임 사이트.",
+      "bullets": [
+        "하루 1만 건 이상 스파이크가 몰리는 TGE 상황에서 지갑 연결과 트랜잭션 전송이 깨지지 않는 클레임 dApp 설계. Binance Alpha, 코인원, Bitget 상장.",
+        "광고 보상 리워드앱의 네이티브 앱(React Native, Expo)과 PWA, NFT 인증·스테이킹 커뮤니티 웹, 베팅 게임용 업그레이더블 컨트랙트."
+      ],
+      "detail": {
+        "description": "국내 게임 스튜디오 111퍼센트의 Web3 사업부 곰블 프로젝트의 웹/앱 플랫폼을 개발했습니다.",
+        "impact": [
+          "하루 1만 건 이상의 스파이크 트래픽이 몰리는 TGE 상황에서 안정적인 지갑 연결과 트랜잭션 전송을 보장하는 dApp 설계."
+        ],
+        "projects": [
+          {
+            "title": "광고 보상 리워드앱",
+            "approach": [
+              "모바일 네이티브 앱(React Native, Expo)과 PWA 개발."
+            ]
+          },
+          {
+            "title": "NFT 커뮤니티 웹사이트",
+            "approach": [
+              "NFT 인증·스테이킹, NFT 게임 제작 의뢰 프론트엔드."
+            ]
+          },
+          {
+            "title": "베팅 기반 블록체인 게임 컨트랙트",
+            "approach": [
+              "Proxy 패턴을 적용한 업그레이드 가능한 스마트 컨트랙트."
+            ]
+          },
+          {
+            "title": "$GM 토큰 클레임 웹사이트",
+            "approach": [
+              "Binance Alpha, 코인원, Bitget 상장 토큰 클레임 사이트."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "React, TypeScript, Vite, Bun, Vite-pwa, React Native, Expo",
+          "Web3": "Viem, Ethers, Wagmi, WalletConnect, Hardhat, Solidity",
+          "Infra": "AWS S3 + Route53, Vercel"
+        }
+      },
+      "project": "곰블"
+    },
+    {
+      "id": "xcbt",
+      "company": "지엑스씨",
+      "role": "Blockchain Engineer",
+      "start": "2024-10",
+      "end": "2025-04",
+      "current": false,
+      "oneLiner": "매달 출시되는 블록체인 게임을 미리 해보고 보상을 받는 플랫폼.",
+      "bullets": [
+        "10K+ USDT 이상 수익을 낸 SNS 인증 미션 플랫폼 기능 개발. NFT 컨트랙트 작성과 업데이트, 클라이언트·백오피스 통합 모노레포."
+      ],
+      "detail": {
+        "description": "한 달마다 출시되는 블록체인 게임을 미리 해보고 경쟁적인 보상을 받는 플랫폼 xCBT의 스마트 컨트랙트 개발·검증과 프론트엔드 상호작용을 담당했습니다.",
+        "impact": [
+          "10K+ USDT 이상 수익을 낸 SNS 인증 미션 플랫폼 기능 개발."
+        ],
+        "projects": [
+          {
+            "title": "SNS 인증 미션 플랫폼",
+            "approach": [
+              "미션 기능 개발.",
+              "NFT 관련 스마트 컨트랙트 작성과 업데이트.",
+              "클라이언트·백오피스 통합 모노레포(pnpm, Turborepo)."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "TypeScript, Next.js, Tailwind CSS, Framer Motion",
+          "Web3": "Solidity, Hardhat, Viem, Thirdweb, Abstract Global Wallet"
+        }
+      },
+      "project": "xCBT"
+    },
+    {
+      "id": "yooldo",
+      "company": "캣제랩스",
+      "role": "Frontend Engineer",
+      "start": "2023-04",
+      "end": "2024-10",
+      "current": false,
+      "oneLiner": "Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼. Consensys 투자 유치.",
+      "bullets": [
+        "Web3에 익숙하지 않은 게이머 90만 명 이상을 온체인으로 온보딩. NFT 구매·검증 UX 설계로 월 최대 15만 달러 수익화에 기여.",
+        "한화 3억 원 이상 수익을 낸 NFT 민팅 페이지 8종, 트랜잭션 영수증 검증 로직, 백오피스, 공통 UI 컴포넌트 npm 라이브러리."
+      ],
+      "detail": {
+        "description": "Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo와 게임 온보딩을 지원했습니다.",
+        "impact": [
+          "블록체인 게이밍 플랫폼에 90만 명 이상의 유저 온보딩.",
+          "NFT 구매·검증 UX 설계 참여 등으로 월 최대 15만 달러 이상의 프로젝트 수익화.",
+          "MetaMask를 운영하는 Consensys로부터 투자 유치에 기여.",
+          "한화 3억 원 이상 수익을 낸 8종 이상의 자체 NFT 민팅 페이지 구축."
+        ],
+        "projects": [
+          {
+            "title": "Yooldo 플랫폼 프론트엔드",
+            "approach": [
+              "플랫폼 개발과 운영, 온체인 이벤트 대응.",
+              "트랜잭션 영수증 분석을 통한 게임 재화 획득 검증 로직.",
+              "백오피스 기능 개발, 공통 UI 컴포넌트 npm 라이브러리 출시 및 관리."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "TypeScript, Next.js, TanStack Query, Framer Motion, Storybook",
+          "Backend": "Node.js, Nest.js, Prisma",
+          "Web3": "Viem, Wagmi",
+          "Infra": "Vercel, GitHub Actions"
+        }
+      },
+      "project": "Yooldo"
+    },
+    {
+      "id": "bluepoint",
+      "company": "블루포인트파트너스",
+      "role": "Frontend Engineer",
+      "start": "2021-07",
+      "end": "2022-03",
+      "current": false,
+      "compact": true,
+      "oneLiner": "액셀러레이터의 비상장 스타트업 투자 관리 인하우스 툴. 3일 걸리던 투자계약 준비를 자동화.",
+      "bullets": [],
+      "detail": {
+        "description": "시드·pre-A 단계 테크 스타트업 전문 액셀러레이터의 인하우스 투자 관리 툴을 개발했습니다.",
+        "impact": [
+          "3일 이상 소요되던 투자계약 준비 운영 작업 자동화.",
+          "팀마다 분산 관리되던 투자 포트폴리오를 인하우스 툴로 통합."
+        ],
+        "projects": [
+          {
+            "title": "비상장 스타트업 투자 관리 툴",
+            "approach": [
+              "투자 심사역 사용자 인터뷰를 통한 스타트업 발굴 UX 개선.",
+              "recharts 기반 시계열·전환율 시각화."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "TypeScript, React, Jest, recharts, styled-components",
+          "Infra": "AWS S3 + Route53"
+        }
+      }
+    },
+    {
+      "id": "tasting-venture",
+      "company": "테이스팅벤처",
+      "role": "Founder",
+      "start": "2018-12",
+      "end": "2019-06",
+      "current": false,
+      "compact": true,
+      "oneLiner": "GPS 기반 분실물 습득/보상 앱 FOUND. 플레이스토어 5천 다운로드.",
+      "bullets": [],
+      "detail": {
+        "description": "GPS 기반 분실물 습득/보상 모바일 플랫폼 FOUND를 개발하고 용인·경기 지역에서 운영했습니다.",
+        "impact": [
+          "플레이스토어 5천 다운로드."
+        ],
+        "projects": [
+          {
+            "title": "FOUND",
+            "approach": [
+              "습득물 리포트 작성 화면 흐름(Android, Java).",
+              "카카오톡 챗봇 분실물 신고 + Flask/MongoDB 챗봇 서버."
+            ]
+          }
+        ],
+        "stack": {
+          "Android": "Java, Retrofit2, Glide",
+          "Backend": "Python, Flask, MongoDB"
+        }
+      },
+      "project": "FOUND"
+    }
+  ],
+  "education": [
+    {
+      "school": "단국대학교",
+      "degree": "전자전기공학부 학사 · 3.92/4.5",
+      "start": "2016",
+      "end": "2023"
+    }
+  ],
+  "credentials": [
+    {
+      "title": "정보처리기사",
+      "issuer": "한국산업인력공단",
+      "date": "2020"
+    },
+    {
+      "title": "특허 · 버스 요금 결제 방법 및 이를 수행하는 버스 요금 결제 서버",
+      "issuer": "특허청",
+      "date": "2020"
+    },
+    {
+      "title": "창업 아이디어 해커톤 대상",
+      "issuer": "경기창조경제혁신센터",
+      "date": "2018"
+    },
+    {
+      "title": "Alchemy University Ethereum Bootcamp 수료",
+      "issuer": "Alchemy",
+      "date": "2024"
+    }
+  ]
+}

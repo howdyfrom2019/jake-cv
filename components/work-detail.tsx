@@ -1,0 +1,90 @@
+import { Shell } from '@/components/shell'
+import { getCv, getUi, periodMonth } from '@/lib/data'
+import type { Locale } from '@/lib/types'
+
+export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
+  const cv = getCv(locale)
+  const ui = getUi(locale)
+  const e = cv.experiences.find((x) => x.id === id)!
+  const d = e.detail
+
+  return (
+    <Shell locale={locale} backHref={`/work/${id}`}>
+      <header>
+        <p className="text-sm text-dim">{periodMonth(e.start, e.end, e.current, ui.now)}</p>
+        <h1 className="mt-1 text-[1.6rem] font-semibold tracking-tight">
+          {e.company}
+          {e.project && (
+            <span className="ml-2">
+              ·{' '}
+              {e.url ? (
+                <a href={e.url} target="_blank" rel="noreferrer" className="u">
+                  {e.project}
+                </a>
+              ) : (
+                e.project
+              )}
+            </span>
+          )}
+          <span className="ml-3 text-[1.05rem] font-normal text-muted">{e.role}</span>
+        </h1>
+        <p className="mt-4 leading-relaxed text-muted">{d.description}</p>
+        {e.contractUrl && (
+          <p className="mt-2 text-sm text-dim">
+            <a href={e.contractUrl} target="_blank" rel="noreferrer" className="u">
+              {e.contractUrl.replace('https://', '')}
+            </a>
+          </p>
+        )}
+      </header>
+
+      {d.impact.length > 0 && (
+        <section className="mt-12">
+          <h2 className="h rule mb-5">{ui.impact}</h2>
+          <ul className="bullets space-y-1.5 leading-relaxed">
+            {d.impact.map((i) => (
+              <li key={i}>{i}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="mt-12">
+        <h2 className="h rule mb-6">{ui.projects}</h2>
+        <div className="space-y-9">
+          {d.projects.map((p) => (
+            <article key={p.title}>
+              <div className="flex items-baseline justify-between gap-4">
+                <h3 className="font-semibold">{p.title}</h3>
+                {p.period && <span className="shrink-0 text-sm text-dim">{p.period}</span>}
+              </div>
+              {p.problem && (
+                <p className="mt-2 leading-relaxed text-muted">
+                  <span className="k">{ui.problem} · </span>
+                  {p.problem}
+                </p>
+              )}
+              <ul className="bullets mt-2 space-y-1 text-[0.95rem] leading-relaxed">
+                {p.approach.map((a) => (
+                  <li key={a}>{a}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="h rule mb-5">{ui.stack}</h2>
+        <dl className="grid gap-x-6 gap-y-1.5 text-[0.95rem] sm:grid-cols-[100px_1fr]">
+          {Object.entries(d.stack).map(([k, v]) => (
+            <div key={k} className="contents">
+              <dt className="text-dim">{k}</dt>
+              <dd className="text-muted">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </Shell>
+  )
+}

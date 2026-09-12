@@ -1,0 +1,122 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: oklch(0.165 0.008 250);
+  --color-fg: oklch(0.91 0.008 250);
+  --color-muted: oklch(0.7 0.01 250);
+  --color-dim: oklch(0.52 0.01 250);
+  --color-line: oklch(0.28 0.01 250);
+  --color-key: oklch(0.8 0.15 165);
+  --font-sans: 'Pretendard Variable', Pretendard, Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-key) 35%, transparent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.k {
+  color: var(--color-key);
+}
+
+.u {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-key) 55%, transparent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.u:hover {
+  text-decoration-color: var(--color-key);
+}
+
+.h {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.rule {
+  position: relative;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.5rem;
+}
+.rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 3.5rem;
+  height: 2px;
+  background: var(--color-key);
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.72em;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-dim);
+}
+
+/* print pages (also used for PDF generation) */
+.print-page {
+  background: #fff;
+  color: #111;
+  font-size: 9.2pt;
+  line-height: 1.42;
+}
+.print-page a {
+  color: #111;
+}
+.print-page .k {
+  color: oklch(0.55 0.14 165);
+}
+.print-page .rule {
+  border-color: #ddd;
+}
+.print-page .bullets li::before {
+  background: #999;
+}
+.print-page .muted {
+  color: #666;
+}
+.print-page .dim {
+  color: #888;
+}
+.avoid-break {
+  break-inside: avoid;
+}
+@page {
+  size: A4;
+  margin: 9mm 11mm;
+}
+@media print {
+  html,
+  body {
+    background: #fff;
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "meta": {
+    "version": "2026.09",
+    "updatedAt": "2026-09-12"
+  },
+  "profile": {
+    "name": "Jake Kim",
+    "altName": "김성주",
+    "headline": "I build cutting-edge financial software.",
+    "intro": [
+      "An AI-native product engineer who started in crypto and has built dApps, on-chain games, and an institutional trading terminal.",
+      "Right now I'm building OrderX, a multi-exchange crypto derivatives terminal. I use Claude and Codex as planner and reviewer, run the systems I design all the way to production, and like building big products with small teams."
+    ],
+    "tagline": [
+      {
+        "label": "Product Engineer",
+        "href": "#orderx"
+      },
+      {
+        "label": "Crypto-native Builder",
+        "href": "#playpsweeper"
+      },
+      {
+        "label": "AI-native Developer",
+        "href": "/en/work/orderx"
+      }
+    ],
+    "email": "jiovana.jake@gmail.com",
+    "location": "Yongin, Korea · Remote",
+    "links": [
+      {
+        "type": "github",
+        "label": "GitHub",
+        "url": "https://github.com/howdyfrom2019"
+      },
+      {
+        "type": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/sungjoo-kim-jake/"
+      },
+      {
+        "type": "x",
+        "label": "X",
+        "url": "https://x.com/b_cryptojvke"
+      },
+      {
+        "type": "telegram",
+        "label": "Telegram",
+        "url": "https://t.me/b_cryptojvke"
+      }
+    ]
+  },
+  "stack": [
+    "TypeScript",
+    "React 19",
+    "Next.js 15",
+    "Vite",
+    "Bun",
+    "Jotai",
+    "TanStack Query",
+    "Tailwind v4",
+    "WebSocket / Protobuf",
+    "TradingView Charting Library",
+    "dnd-kit",
+    "Solidity",
+    "Hardhat",
+    "OpenZeppelin UUPS",
+    "Viem / Wagmi",
+    "Abstract Global Wallet",
+    "React Native / Expo",
+    "Vercel",
+    "AWS"
+  ],
+  "experiences": [
+    {
+      "id": "orderx",
+      "company": "SunLabs AG",
+      "role": "FE Part Lead",
+      "start": "2025-10",
+      "end": null,
+      "current": true,
+      "oneLiner": "Multi-exchange crypto derivatives trading terminal. $10B notional processed and $1M revenue during pilot and private beta.",
+      "bullets": [
+        "Cut steady-state browser memory from 3.8GB to about 1GB so traders can keep the terminal open all day without reloading.",
+        "Replaced react-grid-layout's CPU-bound layout math with an in-house translate-based grid, so chart-heavy dashboards drag and resize without stutter.",
+        "Established the team's AI workflow: context injection, a Claude–Codex planner/reviewer loop, and react-doctor cleanups to land the MVP feature flow. Built a Figma MCP + i18n agent pipeline for localization."
+      ],
+      "detail": {
+        "description": "A trading terminal that puts options, futures, and spot across several exchanges on one screen. Piloted with a large multistrat fund; $10B notional processed and $1M in revenue during private beta. I led the frontend from initial setup and designed its 18 feature domains.",
+        "impact": [
+          "$10B notional processed and $1M revenue during pilot and private beta. Pilot run with a large multistrat fund.",
+          "Steady-state browser memory from 3.8GB down to about 1GB, so an all-day trading session no longer needs reloads.",
+          "Grid engine replacement removed React re-renders during drag and resize; no UX degradation with many chart widgets on screen.",
+          "AI workflow adoption let a small team finish the entire MVP feature flow. Localization automated through a Figma to i18n-agent pipeline."
+        ],
+        "projects": [
+          {
+            "title": "Browser memory optimization (3.8GB → 1GB)",
+            "period": "2026.04 – 2026.08",
+            "problem": "Real-time streams, widget state, TradingView iframes, and query caches accumulated until Chrome sat at 3.8GB, slowing the UI and eventually killing the tab.",
+            "approach": [
+              "Split orderbook and position-table updates down to row and symbol granularity to remove redundant re-renders and allocations.",
+              "Replaced AG Grid with an in-house DataTable with row memoization, virtualization, and clean unsubscribe paths.",
+              "Three-stage runtime recovery: partial resubscribe, then cache invalidation, then reload when returning from a background tab. Reloads are blocked while an order is being entered."
+            ]
+          },
+          {
+            "title": "Translate-based in-house grid system",
+            "period": "2026.06 – 2026.09",
+            "problem": "react-grid-layout recalculated layout and re-rendered React on every mousemove during resize, saturating the CPU.",
+            "approach": [
+              "dnd-kit plus imperative DOM transform (translate) updates so React is out of the loop while dragging.",
+              "Grid-to-pixel math isolated in pure functions and pinned with tests.",
+              "Widget stretch and shareable page layouts with auto-generated OG images."
+            ]
+          },
+          {
+            "title": "AI workflow adoption",
+            "period": "2026.01 – 2026.09",
+            "problem": "A small team had to push MVP features across 18 domains at once, and AI output quality varied widely on a large codebase.",
+            "approach": [
+              "Repository conventions, architecture, and domain rules fixed through context injection so any agent works to the same standard.",
+              "Claude as planner, Codex as reviewer: design, implementation, and review separated, with plan/design documents and gap analysis as the audit trail.",
+              "react-doctor cleanups run as a routine so debt from feature integration does not accumulate."
+            ]
+          },
+          {
+            "title": "Figma MCP + i18n agent pipeline",
+            "period": "2026.06 – 2026.09",
+            "problem": "Design changes and translated copy were applied by hand, so every release shipped with omissions and mismatches.",
+            "approach": [
+              "Figma MCP reads the design source directly to apply component changes.",
+              "An i18n agent finds missing keys, translates and registers them, and syncs with Lokalise. Localization runs on next-intl."
+            ]
+          },
+          {
+            "title": "Chart library migration (lightweight-charts → TradingView)",
+            "period": "2026.03 – 2026.09",
+            "problem": "The backend speaks gRPC-over-HTTP plus WebSocket rather than UDF, so the stock datafeed did not fit.",
+            "approach": [
+              "Provider-pattern custom Datafeed. Position and execution overlays, live quote push, per-account overlays.",
+              "Custom indicators (OI profile, visible-range profile, cross-exchange studies) and a range-preset toolbar."
+            ]
+          },
+          {
+            "title": "AI chat orders and multi-exchange widgets",
+            "period": "2025.12 – 2026.09",
+            "approach": [
+              "UIContext v2 RFC and an @account-tag routing proposal so chat orders can express batches, triggers, and TP/SL; negotiated with the backend team.",
+              "Spreader, Arb builder, Hedge simulation, RFQ, TWAP, One-tap buy. Documented the protocol limits of multi-account aggregation as a backend change request."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "Next.js 15, React 19, TypeScript, Bun, Tailwind v4, Radix UI, Jotai, TanStack Query, React Hook Form, Zod, dnd-kit, framer-motion, react-virtuoso",
+          "Realtime": "Protocol Buffers (ts-proto) over HTTP + WebSocket",
+          "Chart": "TradingView Charting Library v31, TitanCharts, ECharts",
+          "AI": "Vercel AI SDK, assistant-ui, ElevenLabs",
+          "Tooling": "Playwright, Bun test, Lokalise, PostHog, OpenTelemetry, AWS Amplify"
+        }
+      },
+      "project": "OrderX"
+    },
+    {
+      "id": "playpsweeper",
+      "company": "YGG",
+      "url": "https://playpsweeper.com",
+      "role": "Frontend & Contract Engineer",
+      "start": "2025-08",
+      "end": "2026-07",
+      "current": false,
+      "oneLiner": "A roguelike minesweeper on the Abstract chain. Partnered with YGG Play and Raito.",
+      "bullets": [
+        "The payment contract I designed processed 19,939 purchases with zero failures: 72,500 USDC, 25,000 USDT, 104.65 ETH, 50,616,446 YGG.",
+        "Upgradeable proxies let token-economy changes for repurchase and retention ship weekly without redeploying. Externally audited, live on mainnet.",
+        "Built and ran the client and in-game logic solo using context injection. Session keys record in-game actions on-chain without a signature each time."
+      ],
+      "detail": {
+        "description": "The Waifu Sweeper team under Yield Guild Games (YGG). Started as Princess Sweeper, later rebranded to Waifu Sweeper / Playpsweeper. I owned the entire web client and contract stack and shipped design changes (reward multipliers, season leaderboards, Gold Mine mode, revive mode) on a weekly cadence.",
+        "impact": [
+          "19,939 payments through the shop contract with zero failures: 72,500 USDC, 25,000 USDT, 104.65 ETH, 50,616,446 YGG.",
+          "Deployed to Abstract mainnet after an external audit (2025.12). 94 Hardhat tests cover purchases, the oracle, NFTs, and the session tracker.",
+          "Upgradeable proxies allowed token-economy changes (reward multipliers, season leaderboards, Gold Mine, revive mode) without redeploys, supporting repurchase and retention.",
+          "Owned the whole client and contract stack solo. Bot traffic blocked with Cloudflare Turnstile."
+        ],
+        "projects": [
+          {
+            "title": "Operating method: upgradeable proxies and context injection",
+            "period": "2025.09 – 2026.07",
+            "problem": "The token economy (reward multipliers, repurchase incentives, seasonal events) changed weekly, and every touch of the payment contract put user funds at risk.",
+            "approach": [
+              "ShopManager, NFT, and PriceFeed run behind UUPS proxies with a storage-layout review fixed into the deploy checklist. New capabilities such as the session tracker live in separate contracts rather than new proxy slots.",
+              "Game rules, entities, and reward logic specified through context injection so in-game logic changes ship quickly and consistently.",
+              "Result: 19,939 payments with no failures and weekly design releases."
+            ]
+          },
+          {
+            "title": "AGW session-key game sessions",
+            "period": "2026.05 – 2026.06",
+            "problem": "Repeated actions such as opening tiles, defeating monsters, finding items, and reviving had to be recorded on-chain without a wallet signature every time.",
+            "approach": [
+              "A hook that creates, stores, and restores a 24-hour session key with a fee limit and per-contract, per-selector call policies.",
+              "A WaifuGameSessionTracker contract that validates ordering with a per-player session id and action nonce.",
+              "Passed the tracker address as an argument instead of adding storage to the already-deployed ShopManager proxy, and documented why."
+            ]
+          },
+          {
+            "title": "NFT gacha and energy-pack shop",
+            "period": "2025.09 – 2025.12",
+            "approach": [
+              "ShopManager (UUPS): ETH/USDC/USDT/YGG payments with explicit per-token decimals, EIP-712 signature verification with nonce replay protection, slippage handling.",
+              "PriceFeed (UUPS): Pyth ETH/USD feed, confidence checks, cent-denominated pack pricing.",
+              "WaifuSweeperNFT (UUPS ERC721): batch minting up to 30, paginated tokensOfOwner to stay under gas limits.",
+              "Client: bundles Pyth price updates into the transaction, NFT as a payment method, YGG discounts."
+            ]
+          },
+          {
+            "title": "Live-ops tooling and seasons",
+            "period": "2026.01 – 2026.07",
+            "approach": [
+              "Season and Gold Mine leaderboards, reward dashboard, revive mode, referral-code validation.",
+              "Maintenance page with a service schedule, per-feature and date-based flags.",
+              "GA4 event design, Twitter Pixel, SEO/OG, BGM and sound effects, image preloading."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "React 19, TypeScript, Vite 7, Tailwind v4, Radix UI, Jotai, TanStack Query, Framer Motion, react-router 7",
+          "Web3": "Wagmi, Viem, Ethers v6, RainbowKit, Abstract Global Wallet (sessions)",
+          "Contracts": "Solidity, Hardhat, OpenZeppelin Upgradeable v5, Pyth SDK, TypeChain",
+          "Infra": "Vercel, Cloudflare Turnstile, GA4"
+        }
+      },
+      "project": "Waifu Sweeper",
+      "contractUrl": "https://abscan.org/address/0x465738e6d8ded1384c3e8402658257d4ae8ed17d"
+    },
+    {
+      "id": "gomble",
+      "company": "111percent",
+      "role": "Frontend Engineer",
+      "start": "2025-04",
+      "end": null,
+      "current": false,
+      "oneLiner": "Web3 arm of game studio 111percent. Reward app, NFT community, $GM token claim site.",
+      "bullets": [
+        "Designed the token-claim dApp to keep wallet connection and transactions stable through a TGE with 10k+ daily spikes. Listed on Binance Alpha, Coinone, Bitget.",
+        "Native app (React Native, Expo) and PWA for the ad-reward product, NFT verification and staking community site, upgradeable contracts for a betting game."
+      ],
+      "detail": {
+        "description": "Built the web and app platform for Gomble, the Web3 division of Korean game studio 111percent.",
+        "impact": [
+          "Designed a dApp that kept wallet connection and transaction delivery stable through a TGE with more than 10,000 daily spike requests."
+        ],
+        "projects": [
+          {
+            "title": "Ad-reward app",
+            "approach": [
+              "Native mobile app (React Native, Expo) and PWA."
+            ]
+          },
+          {
+            "title": "NFT community site",
+            "approach": [
+              "NFT verification, staking, and a request flow for commissioning NFT games."
+            ]
+          },
+          {
+            "title": "Betting game contracts",
+            "approach": [
+              "Upgradeable smart contracts using the proxy pattern."
+            ]
+          },
+          {
+            "title": "$GM token claim site",
+            "approach": [
+              "Claim site for a token listed on Binance Alpha, Coinone, and Bitget."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "React, TypeScript, Vite, Bun, Vite-pwa, React Native, Expo",
+          "Web3": "Viem, Ethers, Wagmi, WalletConnect, Hardhat, Solidity",
+          "Infra": "AWS S3 + Route53, Vercel"
+        }
+      },
+      "project": "Gomble"
+    },
+    {
+      "id": "xcbt",
+      "company": "GXC",
+      "role": "Blockchain Engineer",
+      "start": "2024-10",
+      "end": "2025-04",
+      "current": false,
+      "oneLiner": "A platform where players test a new blockchain game every month and compete for rewards.",
+      "bullets": [
+        "Built the social-verification mission platform that earned 10K+ USDT. Wrote and updated NFT contracts, worked in a client + back-office monorepo."
+      ],
+      "detail": {
+        "description": "Smart contract development and verification plus frontend integration for xCBT, a platform where players preview monthly blockchain game releases and compete for rewards.",
+        "impact": [
+          "Built the social-verification mission platform that generated 10K+ USDT."
+        ],
+        "projects": [
+          {
+            "title": "Social-verification mission platform",
+            "approach": [
+              "Mission features.",
+              "Wrote and updated NFT-related smart contracts.",
+              "Client and back-office monorepo (pnpm, Turborepo)."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "TypeScript, Next.js, Tailwind CSS, Framer Motion",
+          "Web3": "Solidity, Hardhat, Viem, Thirdweb, Abstract Global Wallet"
+        }
+      },
+      "project": "xCBT"
+    },
+    {
+      "id": "yooldo",
+      "company": "CatzeLabs",
+      "role": "Frontend Engineer",
+      "start": "2023-04",
+      "end": "2024-10",
+      "current": false,
+      "oneLiner": "Blockchain gaming platform helping Web2 games move to Web3. Backed by Consensys.",
+      "bullets": [
+        "Onboarded 900k+ gamers unfamiliar with Web3 onto the chain. NFT purchase and verification UX that contributed to up to $150k monthly revenue.",
+        "Eight NFT mint pages grossing 300M+ KRW, transaction-receipt verification logic, back-office tooling, and a shared UI component library on npm."
+      ],
+      "detail": {
+        "description": "Frontend for Yooldo, a blockchain gaming platform that helps Web2 games transition to Web3, plus game onboarding support.",
+        "impact": [
+          "Onboarded more than 900,000 users onto the platform.",
+          "Contributed to up to $150k monthly revenue through NFT purchase and verification UX.",
+          "Helped secure investment from Consensys, the company behind MetaMask.",
+          "Built eight or more in-house NFT mint pages grossing over 300M KRW."
+        ],
+        "projects": [
+          {
+            "title": "Yooldo platform frontend",
+            "approach": [
+              "Platform development, operations, and on-chain event handling.",
+              "Transaction-receipt analysis to verify in-game asset acquisition.",
+              "Back-office features and a shared UI component library published to npm."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "TypeScript, Next.js, TanStack Query, Framer Motion, Storybook",
+          "Backend": "Node.js, Nest.js, Prisma",
+          "Web3": "Viem, Wagmi",
+          "Infra": "Vercel, GitHub Actions"
+        }
+      },
+      "project": "Yooldo"
+    },
+    {
+      "id": "bluepoint",
+      "company": "Bluepoint Partners",
+      "role": "Frontend Engineer",
+      "start": "2021-07",
+      "end": "2022-03",
+      "current": false,
+      "compact": true,
+      "oneLiner": "In-house investment management tool for an accelerator. Automated a three-day contract-prep process.",
+      "bullets": [],
+      "detail": {
+        "description": "Built the in-house investment management tool for an accelerator focused on seed and pre-A tech startups.",
+        "impact": [
+          "Automated investment-contract preparation that used to take more than three days.",
+          "Consolidated portfolio tracking that had been scattered across teams."
+        ],
+        "projects": [
+          {
+            "title": "Startup investment management tool",
+            "approach": [
+              "Improved deal-sourcing UX through interviews with investment associates.",
+              "Time-series and conversion visualizations with recharts."
+            ]
+          }
+        ],
+        "stack": {
+          "Frontend": "TypeScript, React, Jest, recharts, styled-components",
+          "Infra": "AWS S3 + Route53"
+        }
+      }
+    },
+    {
+      "id": "tasting-venture",
+      "company": "Tasting Venture",
+      "role": "Founder",
+      "start": "2018-12",
+      "end": "2019-06",
+      "current": false,
+      "compact": true,
+      "oneLiner": "FOUND, a GPS-based lost-and-found reward app. 5k Play Store downloads.",
+      "bullets": [],
+      "detail": {
+        "description": "Built and operated FOUND, a GPS-based lost-and-found reward app, in the Yongin area.",
+        "impact": [
+          "5,000 downloads on the Play Store."
+        ],
+        "projects": [
+          {
+            "title": "FOUND",
+            "approach": [
+              "Found-item reporting flow (Android, Java).",
+              "KakaoTalk chatbot for lost-item reports with a Flask/MongoDB webhook server."
+            ]
+          }
+        ],
+        "stack": {
+          "Android": "Java, Retrofit2, Glide",
+          "Backend": "Python, Flask, MongoDB"
+        }
+      },
+      "project": "FOUND"
+    }
+  ],
+  "education": [
+    {
+      "school": "Dankook University",
+      "degree": "B.S. Electrical & Electronic Engineering · 3.92/4.5",
+      "start": "2016",
+      "end": "2023"
+    }
+  ],
+  "credentials": [
+    {
+      "title": "Engineer Information Processing",
+      "issuer": "HRD Korea",
+      "date": "2020"
+    },
+    {
+      "title": "Patent · Bus fare payment method and server",
+      "issuer": "KIPO",
+      "date": "2020"
+    },
+    {
+      "title": "Startup Idea Hackathon, Grand Prize",
+      "issuer": "Gyeonggi CCEI",
+      "date": "2018"
+    },
+    {
+      "title": "Alchemy University Ethereum Bootcamp",
+      "issuer": "Alchemy",
+      "date": "2024"
+    }
+  ]
+}
