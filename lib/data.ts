@@ -16,7 +16,7 @@ export function getUi(locale: Locale): UI {
 }
 
 export function localePath(locale: Locale, path = '') {
-  const base = locale === 'en' ? '/en' : ''
+  const base = locale === 'ko' ? '/ko' : ''
   return `${base}${path}` || '/'
 }
 

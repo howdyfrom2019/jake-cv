@@ -6,7 +6,7 @@
   "profile": {
     "name": "Jake Kim",
     "altName": "김성주",
-    "headline": "I build cutting-edge financial software.",
+    "headline": "I build financial software people trust with real money.",
     "intro": [
       "An AI-native product engineer who started in crypto and has built dApps, on-chain games, and an institutional trading terminal.",
       "Right now I'm building OrderX, a multi-exchange crypto derivatives terminal. I use Claude and Codex as planner and reviewer, run the systems I design all the way to production, and like building big products with small teams."
@@ -83,15 +83,15 @@
       "bullets": [
         "Designed the order-execution flow that bundles [[options]] and futures orders across venues and accounts into one [[order-form]], unifying each exchange's symbol format and account structure on the frontend.",
         "Cut steady-state browser memory from 3.8GB to about 1GB. Replaced [[react-grid-layout]]'s CPU-bound layout math with a [[translate-grid|translate-based grid]] so chart-heavy dashboards drag without stutter.",
-        "Established the team's AI workflow with [[context-injection]] and a Claude–Codex [[planner-reviewer]] loop, letting a small team finish the MVP. Built a [[figma-mcp|Figma MCP]] + [[i18n]] agent pipeline for localization."
+        "Established a [[context-injection]] + Claude–Codex [[planner-reviewer]] workflow. Edge cases that a single model or agent would have left to resurface days or weeks later get caught at review, saving one to three-plus working days per feature. Built a [[figma-mcp|Figma MCP]] + [[i18n]] agent pipeline for localization."
       ],
       "detail": {
-        "description": "A terminal that starts from crypto [[derivatives]] and is heading toward an institutional [[trading-desk]]. It handles crypto venues (Deribit, Hyperliquid, Lighter, Bybit, Binance) and traditional markets (OPRA US options, CME, IBKR) on one screen. Piloted with a large [[multistrat|multistrat fund]]; $10B [[notional]] processed and $1M in revenue during private beta. I led the frontend from initial setup and designed its 18 feature domains.",
+        "description": "A terminal that starts from crypto [[derivatives]] and is heading toward an institutional [[trading-desk]]. It handles crypto venues (Deribit, Hyperliquid, Lighter, Bybit, Binance) and traditional markets (OPRA US options, CME, IBKR) on one screen. Piloted with a large [[multistrat|multistrat fund]]; $10B [[notional]] processed and $1M in revenue during private beta. I built the frontend from initial setup as the sole owner, pairing on the harder stretches, and designed its 18 feature domains.",
         "impact": [
           "$10B [[notional]] processed and $1M revenue during pilot and private beta. Pilot run with a large [[multistrat|multistrat fund]].",
           "Unified order execution and [[multi-exchange]] support on the frontend, so traders place orders across accounts from one screen instead of hopping between exchanges.",
           "Steady-state browser memory from 3.8GB down to about 1GB, so an all-day trading session no longer needs reloads.",
-          "AI workflow adoption let a small team finish the entire MVP feature flow. Localization automated through a Figma to i18n-agent pipeline."
+          "AI workflow: edge cases that single-agent work used to leave behind are caught at the planner/reviewer stage, saving one to three-plus working days per feature. A small team finished the entire MVP flow. Localization automated through a Figma to i18n-agent pipeline."
         ],
         "projects": [
           {
@@ -130,11 +130,12 @@
           {
             "title": "AI workflow adoption",
             "period": "2026.01 – 2026.09",
-            "problem": "A small team had to push MVP features across 18 domains at once, and AI output quality varied widely on a large codebase.",
+            "problem": "A small team had to push MVP features across 18 domains at once. Single-model, single-agent work shipped fine on day one but left edge cases behind, so the same feature had to be reopened days or weeks later.",
             "approach": [
               "Repository conventions, architecture, and domain rules fixed through [[context-injection]] so any agent works to the same standard.",
               "Claude as planner, Codex as reviewer ([[planner-reviewer]]): design, implementation, and review separated, with plan/design documents and gap analysis as the audit trail.",
-              "[[react-doctor]] cleanups run as a routine so debt from feature integration does not accumulate."
+              "[[react-doctor]] cleanups run as a routine so debt from feature integration does not accumulate.",
+              "Outcome: coverage over speed. Edge cases caught at review removed one to three-plus working days of rework per feature."
             ]
           },
           {
@@ -177,14 +178,14 @@
       "current": false,
       "oneLiner": "A roguelike minesweeper on the [[abstract|Abstract chain]]. Partnered with YGG Play and Raito. The service has ended; the link is a build on the original frontend core.",
       "bullets": [
-        "The payment contract I designed processed 19,939 purchases with zero failures, about $1.5M in total (72,500 USDC, 25,000 USDT, 104.65 ETH, 50,616,446 YGG at Sep 2026 prices).",
+        "The payment contract I designed processed 19,939 purchases with zero failures, {{basket:USDC=72500,USDT=25000,ETH=104.65,YGG=50616446|about $1.5M}} in total (72,500 USDC, 25,000 USDT, {{price:ETH:104.65|104.65 ETH}}, {{price:YGG:50616446|50,616,446 YGG}}). Hover an amount for the live conversion.",
         "[[uups|Upgradeable proxies]] let token-economy changes for repurchase and retention ship weekly without redeploying. Externally audited, ran on mainnet.",
         "Built and ran the client and in-game logic solo using [[context-injection]]. [[session-key|Session keys]] record in-game actions on-chain without a signature each time."
       ],
       "detail": {
         "description": "The Waifu Sweeper team under Yield Guild Games (YGG). Started as Princess Sweeper, later rebranded to Waifu Sweeper / Playpsweeper. I owned the entire web client and contract stack and shipped design changes (reward multipliers, season leaderboards, Gold Mine mode, revive mode) on a weekly cadence. The service has ended; the link is a build on the original frontend core logic.",
         "impact": [
-          "19,939 payments through the shop contract with zero failures, about $1.5M in total: 72,500 USDC, 25,000 USDT, 104.65 ETH (≈$266,048), 50,616,446 YGG (≈$1,144,263). ETH and YGG converted at 2026-09-12 prices.",
+          "19,939 payments through the shop contract with zero failures, {{basket:USDC=72500,USDT=25000,ETH=104.65,YGG=50616446|about $1.5M}} in total: 72,500 USDC, 25,000 USDT, {{price:ETH:104.65|104.65 ETH}}, {{price:YGG:50616446|50,616,446 YGG}}. Shown at 2026-09-12 prices; hover for the live conversion.",
           "Deployed to [[abstract|Abstract]] mainnet after an external audit (2025.12). 94 Hardhat tests cover purchases, the oracle, NFTs, and the session tracker.",
           "[[uups|Upgradeable proxies]] allowed token-economy changes (reward multipliers, season leaderboards, Gold Mine, revive mode) without redeploys, supporting repurchase and retention.",
           "Owned the whole client and contract stack solo. Bot traffic blocked with [[turnstile|Cloudflare Turnstile]]."

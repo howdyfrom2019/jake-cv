@@ -30,8 +30,8 @@ export function buildLlmsTxt(): string {
   lines.push('')
 
   lines.push('## Site')
-  lines.push(`- [Korean CV](${abs('/')}): full landing page, Korean.`)
-  lines.push(`- [English CV](${abs('/en')}): full landing page, English.`)
+  lines.push(`- [English CV](${abs('/')}): full landing page, English (default).`)
+  lines.push(`- [Korean CV](${abs('/ko')}): full landing page, Korean.`)
   lines.push(
     `- [Full content dump](${abs('/llms-full.txt')}): every work experience, project, and outcome in both languages, in one plain-text file.`,
   )

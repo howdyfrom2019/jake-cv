@@ -47,7 +47,7 @@
 
 ### SunLabs AG · OrderX · FE Part Lead
 
-**2025.10 ~ 재직중 (12개월)** · 원격 근무 · https://app.orderx.com
+**2025.10 ~ 재직중 (12개월)** · 원격 근무 · 프론트엔드 1인 주도 개발(필요 시 페어 프로그래밍) · https://app.orderx.com
 
 크립토 파생상품(옵션·선물·현물) 멀티 거래소 트레이딩 터미널 OrderX의 프론트엔드를 초기 세팅부터 리드하고 있습니다. 커스터마이즈 가능한 위젯 대시보드, 실시간 마켓/계정 스트림, 차트, 주문 입력, 포트폴리오, 분석 위젯, AI 채팅 기반 주문 워크플로우를 포함합니다.
 
@@ -56,7 +56,7 @@
 - 파일럿 + 프라이빗 베타 단계에서 명목 거래 $10B 처리, $1M 매출. 대형 멀티스트랫 펀드 파일럿 운영.
 - 주문 실행과 멀티 거래소(Deribit, Hyperliquid, Lighter, Bybit, Binance, OPRA, CME, IBKR) 지원을 프론트에서 통합. 배치 주문, 앵커 가격 기반 미리보기, 계정 자동 해석, 거래소별 종목 표기의 구조화. TP/SL·RFQ·Spreader·Arb·Hedge·TWAP·One-tap 주문 방식을 그 위에 구축.
 - 브라우저 메모리 상시 점유 3.8GB → 1GB 내외. react-grid-layout의 CPU 계산을 translate 기반 자체 그리드로 교체.
-- Context injection과 Claude–Codex planner/reviewer 구조, react-doctor 클린업으로 AI 워크플로우 정착. Figma MCP + i18n 에이전트 다국어 파이프라인.
+- Context injection과 Claude–Codex planner/reviewer 구조로 AI 워크플로우 정착. 단일 모델·단일 에이전트였다면 며칠~몇 주 뒤 다시 손봐야 했을 엣지 케이스를 리뷰 단계에서 잡아 기능당 작업일 1~3일 이상 절감. Figma MCP + i18n 에이전트 다국어 파이프라인.
 
 **주요 업무**
 

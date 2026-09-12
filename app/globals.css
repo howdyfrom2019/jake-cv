@@ -169,3 +169,23 @@ a {
     display: none;
   }
 }
+
+/* live price hovercard */
+.price {
+  font: inherit;
+  border-bottom: 1px dashed color-mix(in oklab, var(--color-key) 70%, transparent);
+}
+.price:hover {
+  color: var(--color-key);
+}
+.price-card {
+  background: color-mix(in oklab, var(--color-bg) 92%, black);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+@media print {
+  .price {
+    border-bottom: none;
+  }
+}

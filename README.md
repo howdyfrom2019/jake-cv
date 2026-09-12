@@ -18,11 +18,15 @@ PDF는 시스템 Chrome(headless)으로 `/print/{ko|en}/{cv|portfolio}`를 렌�
 
 | 경로 | 내용 |
 | --- | --- |
-| `/`, `/en` | 랜딩. 이름, 후킹 문구, 커리어 흐름(블록체인 → 게임 → 컨트랙트 → 트레이딩 터미널), 아이콘, PDF 다운로드, 경력 요약, 글, 스택, 학력 |
-| `/work/[id]`, `/en/work/[id]` | 경력 상세. 성과, 프로젝트(문제 → 접근), 스택 |
-| `/preview/{cv\|portfolio}`, `/en/preview/...` | 이력서·경력기술서 미리보기. 상단 툴바에서 PDF 다운로드 |
+| `/` (EN), `/ko` (KR) | 랜딩. 이름, 후킹 문구, 직무 줄, 아이콘, 문서 미리보기 링크, 경력 요약, 글, 스택, 학력 |
+| `/work/[id]`, `/ko/work/[id]` | 경력 상세. 성과, 프로젝트(문제 → 접근), 스택 |
+| `/preview/{cv\|portfolio}`, `/ko/preview/...` | 이력서·경력기술서 미리보기. 상단 툴바에서 PDF 다운로드 |
 | `/print/{locale}/{cv\|portfolio}` | 인쇄용 문서. PDF 생성 소스, 검색 제외 |
 | `/downloads/jake-kim-{cv\|portfolio}-{ko\|en}.pdf` | 정적 PDF |
+
+## 언어 선택
+
+기본은 영어(`/`)이고 한국어는 `/ko`입니다. `middleware.ts`가 첫 방문 시 `Accept-Language`가 한국어면 `/ko`로 보내고, 방문한 언어를 `locale` 쿠키(1년)에 저장해 이후에는 사용자가 고른 언어를 유지합니다. 정적 파일, `/print`, `/downloads`, `llms.txt` 등은 미들웨어를 거치지 않습니다.
 
 ## 데이터
 
@@ -54,6 +58,10 @@ OG 메타(제목, 요약, 발행일)를 읽어 `data/posts.json`에 넣고 호�
 
 - 웹: `components/rich-text.tsx`가 토큰을 `<Term>`으로 바꾸고, `components/glossary-panel.tsx`가 패널 상태를 관리합니다.
 - PDF·llms.txt: `lib/glossary.ts`의 `stripTerms`로 토큰을 표시 문구로 치환합니다. 경력기술서 PDF 끝에는 본문에 쓰인 용어만 모은 "용어 설명" 부록이 붙습니다.
+
+## 실시간 시세 hovercard
+
+본문의 `{{price:ETH:104.65|ETH 104.65}}`, `{{basket:USDC=72500,ETH=104.65,...|약 $1.5M}}` 토큰은 마우스를 올리면 Binance 공개 API(`/api/v3/ticker/price`)에서 현재가를 받아 달러로 환산해 보여줍니다(`components/price-hover.tsx`, 60초 캐시, USDC/USDT는 1달러 고정). PDF·llms.txt에서는 라벨 문구만 남습니다.
 
 ## AI 에이전트 친화 (llms.txt)
 

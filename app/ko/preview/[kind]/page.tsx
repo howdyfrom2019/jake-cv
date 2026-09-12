@@ -13,12 +13,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { kind } = await params
-  const ui = getUi('en')
+  const ui = getUi('ko')
   return { title: kind === 'cv' ? ui.cvTitle : ui.portfolioTitle }
 }
 
 export default async function Page({ params }: Params) {
   const { kind } = await params
   if (!KINDS.includes(kind as Kind)) notFound()
-  return <DocPreview locale="en" kind={kind as Kind} />
+  return <DocPreview locale="ko" kind={kind as Kind} />
 }

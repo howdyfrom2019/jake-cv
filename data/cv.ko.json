@@ -83,15 +83,15 @@
       "bullets": [
         "여러 거래소·계정에 흩어진 [[options|옵션]]·선물 주문을 하나의 [[order-form|주문 폼]]에서 묶어 내보내는 주문 실행 흐름을 설계. 거래소마다 다른 종목 표기와 계정 구조를 프론트에서 통일.",
         "브라우저 메모리 상시 3.8GB → 1GB 내외. [[react-grid-layout]]의 CPU 계산을 [[translate-grid|translate 기반 자체 그리드]]로 바꿔 차트가 많은 화면에서도 드래그가 끊기지 않게 함.",
-        "[[context-injection|Context injection]]과 Claude–Codex [[planner-reviewer|planner/reviewer]] 구조로 AI 워크플로우를 팀에 정착시켜 소수 인원으로 MVP 완성. [[figma-mcp|Figma MCP]] + [[i18n]] 에이전트로 다국어 파이프라인 구축."
+        "[[context-injection|Context injection]]과 Claude–Codex [[planner-reviewer|planner/reviewer]] 구조를 팀에 정착. 단일 모델·단일 에이전트였다면 며칠~몇 주 뒤에 다시 손봐야 했을 엣지 케이스를 리뷰 단계에서 잡아, 기능당 작업일 기준 1~3일 이상을 절감. [[figma-mcp|Figma MCP]] + [[i18n]] 에이전트로 다국어 파이프라인 구축."
       ],
       "detail": {
-        "description": "크립토 [[derivatives|파생상품]]에서 출발해 장기적으로 [[trading-desk|기관용 트레이딩 데스크]]를 지향하는 터미널입니다. Deribit, Hyperliquid, Lighter, Bybit, Binance 같은 크립토 거래소와 OPRA(미국 옵션), CME, IBKR 같은 전통 시장을 한 화면에서 다룹니다. 대형 [[multistrat|멀티스트랫 펀드]]와 파일럿을 진행했고, 프라이빗 베타 단계에서 [[notional|명목 거래]] $10B를 처리하며 $1M 매출을 냈습니다. 프론트엔드를 초기 세팅부터 리드하며 18개 피처 도메인을 설계했습니다.",
+        "description": "크립토 [[derivatives|파생상품]]에서 출발해 장기적으로 [[trading-desk|기관용 트레이딩 데스크]]를 지향하는 터미널입니다. Deribit, Hyperliquid, Lighter, Bybit, Binance 같은 크립토 거래소와 OPRA(미국 옵션), CME, IBKR 같은 전통 시장을 한 화면에서 다룹니다. 대형 [[multistrat|멀티스트랫 펀드]]와 파일럿을 진행했고, 프라이빗 베타 단계에서 [[notional|명목 거래]] $10B를 처리하며 $1M 매출을 냈습니다. 프론트엔드는 초기 세팅부터 1인 주도로 개발하고, 필요한 구간은 페어 프로그래밍으로 풀었습니다. 18개 피처 도메인을 설계했습니다.",
         "impact": [
           "파일럿 + 프라이빗 베타 단계에서 [[notional|명목 거래]] $10B 처리, $1M 매출. 대형 [[multistrat|멀티스트랫 펀드]] 파일럿 운영.",
           "주문 실행과 [[multi-exchange|멀티 거래소]] 지원을 프론트에서 통합해, 트레이더가 거래소를 오가지 않고 한 화면에서 여러 계정으로 주문.",
           "브라우저 메모리 상시 점유 3.8GB → 1GB 내외. 하루 종일 켜 두는 트레이더 워크플로우에서 리로드 없이 운용.",
-          "AI 워크플로우 정착으로 소수 인원이 MVP 기능 플로우 전체를 완성. 다국어는 Figma → i18n 에이전트 파이프라인으로 자동화."
+          "AI 워크플로우 정착: 단일 에이전트 작업에서 방치되던 엣지 케이스를 planner/reviewer 단계에서 잡아, 기능당 작업일 1~3일 이상 절감. 소수 인원으로 MVP 기능 플로우 전체를 완성. 다국어는 Figma → i18n 에이전트 파이프라인으로 자동화."
         ],
         "projects": [
           {
@@ -130,11 +130,12 @@
           {
             "title": "AI 워크플로우 도입",
             "period": "2026.01 – 2026.09",
-            "problem": "소수 인원으로 18개 도메인의 MVP 기능을 동시에 밀어야 했고, 컨텍스트가 큰 코드베이스에서 AI 산출물의 품질 편차가 컸습니다.",
+            "problem": "소수 인원으로 18개 도메인의 MVP 기능을 동시에 밀어야 했습니다. 단일 모델·단일 에이전트로 만들면 당장은 돌아가도 엣지 케이스가 방치돼, 며칠에서 몇 주 뒤 같은 기능을 다시 열어봐야 하는 일이 반복됐습니다.",
             "approach": [
               "레포 컨벤션·아키텍처·도메인 규칙을 [[context-injection|context injection]]으로 고정해 어떤 에이전트가 붙어도 같은 기준으로 작업하게 함.",
               "Claude(planner) – Codex(reviewer) [[planner-reviewer|역할 분리]]로 설계 → 구현 → 리뷰를 나눔. Plan/Design 문서와 Gap 분석을 남겨 검증.",
-              "[[react-doctor]] 기반 클린업을 정기 루틴으로 돌려 기능 통합 시 누적되는 부채를 제거."
+              "[[react-doctor]] 기반 클린업을 정기 루틴으로 돌려 기능 통합 시 누적되는 부채를 제거.",
+              "결과: 속도보다 커버리지. 리뷰 단계에서 잡힌 엣지 케이스 덕분에 기능당 작업일 기준 1~3일 이상의 재작업이 사라짐."
             ]
           },
           {
@@ -177,14 +178,14 @@
       "current": false,
       "oneLiner": "[[abstract|Abstract 체인]] 위의 로그라이크 지뢰찾기 온체인 게임. YGG Play, Raito 파트너십. 서비스는 종료됐고 링크는 초기 코어 로직 기반 빌드입니다.",
       "bullets": [
-        "직접 설계한 결제 컨트랙트로 19,939건의 결제를 한 건의 실패 없이 처리. 합계 약 $1.5M 상당(USDC 72,500 · USDT 25,000 · ETH 104.65 · YGG 50,616,446, 2026.09 시세 환산).",
+        "직접 설계한 결제 컨트랙트로 19,939건의 결제를 한 건의 실패 없이 처리. 합계 {{basket:USDC=72500,USDT=25000,ETH=104.65,YGG=50616446|약 $1.5M}} 상당(USDC 72,500 · USDT 25,000 · {{price:ETH:104.65|ETH 104.65}} · {{price:YGG:50616446|YGG 50,616,446}}). 금액에 마우스를 올리면 현재 시세로 환산됩니다.",
         "[[uups|업그레이더블 프록시]]로 토큰 경제 순환, 재구매, 재방문율을 위한 운영 변경을 컨트랙트 재배포 없이 매주 반영. 외부 감사 후 메인넷 운영.",
         "[[context-injection|Context injection]]으로 인게임 로직과 클라이언트를 혼자 구현·운영. [[session-key|세션 키]]로 게임 중 액션을 서명 없이 온체인 기록."
       ],
       "detail": {
         "description": "Yield Guild Games(YGG) 산하 Waifu Sweeper 팀. 프로젝트 초기명은 Princess Sweeper, 이후 Waifu Sweeper / Playpsweeper로 리브랜딩했습니다. 웹 클라이언트와 스마트 컨트랙트 전체를 혼자 맡았고, 기획 변경(보상 배율, 시즌 리더보드, Gold Mine 모드, revive 모드)을 매주 단위로 배포했습니다. 서비스는 종료됐으며, 링크는 최초 프론트엔드 코어 로직 기반의 빌드입니다.",
         "impact": [
-          "결제 컨트랙트 19,939건 무실패 처리. 합계 약 $1.5M 상당: USDC 72,500 · USDT 25,000 · ETH 104.65(≈$266,048) · YGG 50,616,446(≈$1,144,263). ETH·YGG는 2026.09.12 시세로 환산.",
+          "결제 컨트랙트 19,939건 무실패 처리. 합계 {{basket:USDC=72500,USDT=25000,ETH=104.65,YGG=50616446|약 $1.5M}} 상당: USDC 72,500 · USDT 25,000 · {{price:ETH:104.65|ETH 104.65}} · {{price:YGG:50616446|YGG 50,616,446}}. 표시 금액은 2026.09.12 시세 환산이며, 마우스를 올리면 현재 시세로 다시 계산합니다.",
           "외부 감사(2025.12) 반영 후 [[abstract|Abstract]] 메인넷 배포. 94개 Hardhat 테스트로 구매·오라클·NFT·세션 트래커 시나리오 검증.",
           "[[uups|업그레이더블 프록시]] 운영으로 보상 배율, 시즌 리더보드, Gold Mine, revive 모드 같은 토큰 경제 변경을 재배포 없이 반영. 재구매·재방문율 개선에 기여.",
           "웹 클라이언트와 컨트랙트 전체를 단독 개발·운영. [[turnstile|Cloudflare Turnstile]]로 봇 트래픽 차단."

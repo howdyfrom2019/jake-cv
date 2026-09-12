@@ -2,19 +2,19 @@ import type { Metadata } from 'next'
 import { SITE_URL, getCv } from '@/lib/data'
 import './globals.css'
 
-const ko = getCv('ko')
+const en = getCv('en')
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: 'Jake Kim', template: '%s · Jake Kim' },
-  description: ko.profile.headline,
+  description: en.profile.headline,
   openGraph: { siteName: 'Jake Kim', type: 'website' },
   twitter: { card: 'summary', creator: '@b_cryptojake' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="en">
       <head>
         <link
           rel="stylesheet"
