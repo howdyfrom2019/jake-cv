@@ -1,13 +1,30 @@
 import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
 import { getCv, getUi, periodMonth } from '@/lib/data'
+import { firstOccurrenceOnly, stripTermTokens } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
 export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
   const cv = getCv(locale)
   const ui = getUi(locale)
   const e = cv.experiences.find((x) => x.id === id)!
-  const d = e.detail
+  const seen = new Set<string>()
+  // Glossary links live only where a reader first meets the jargon: the
+  // description, the impact list, and the first project. Later projects are
+  // plain text so the page stays readable.
+  const [description, ...impact] = firstOccurrenceOnly([e.detail.description, ...e.detail.impact], locale, seen)
+  const projects = e.detail.projects.map((p, i) => {
+    if (i === 0) {
+      const [problem, ...approach] = firstOccurrenceOnly([p.problem ?? '', ...p.approach], locale, seen)
+      return { ...p, problem: p.problem ? problem : undefined, approach }
+    }
+    return {
+      ...p,
+      problem: p.problem ? stripTermTokens(p.problem, locale) : undefined,
+      approach: p.approach.map((a) => stripTermTokens(a, locale)),
+    }
+  })
+  const d = { ...e.detail, description, impact, projects }
 
   return (
     <Shell locale={locale} backHref={`/work/${id}`}>
@@ -19,7 +36,7 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
             <span className="ml-2">
               ·{' '}
               {e.url ? (
-                <a href={e.url} target="_blank" rel="noreferrer" className="u">
+                <a href={e.url} target="_blank" rel="noreferrer" className="ext">
                   {e.project}
                 </a>
               ) : (
@@ -34,7 +51,7 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
         </p>
         {e.contractUrl && (
           <p className="mt-2 text-sm text-dim">
-            <a href={e.contractUrl} target="_blank" rel="noreferrer" className="u">
+            <a href={e.contractUrl} target="_blank" rel="noreferrer" className="ext">
               {ui.explorer}
             </a>
           </p>

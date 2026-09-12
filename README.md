@@ -56,7 +56,8 @@ OG 메타(제목, 요약, 발행일)를 읽어 `data/posts.json`에 넣고 호�
 
 본문에서 `[[id]]` 또는 `[[id|표시 문구]]`로 표시한 용어는 점선 밑줄로 렌더되고, 누르면 우하단(모바일은 하단)에 터미널처럼 생긴 패널이 열려 설명을 쌓아 보여줍니다. 정의는 `data/glossary.json`에 `term.ko/en`, `ko`, `en`, `related[]`로 두고, 새 용어는 거기에 추가한 뒤 본문에 토큰을 넣으면 됩니다.
 
-- 웹: `components/rich-text.tsx`가 토큰을 `<Term>`으로 바꾸고, `components/glossary-panel.tsx`가 패널 상태를 관리합니다.
+- 웹: `components/rich-text.tsx`가 토큰을 `<Term>`으로 바꾸고, `components/glossary-panel.tsx`가 패널 상태를 관리합니다. 같은 용어는 페이지에서 처음 나올 때만 링크가 되고(`firstOccurrenceOnly`), 상세 페이지에서는 설명·성과·첫 프로젝트까지만 용어 링크를 허용하고 나머지 프로젝트는 일반 텍스트로 둡니다.
+- 외부 링크(프로젝트명, 스캐너, 원문)는 `.ext` 클래스로 실선 밑줄 + 우상향 chevron이 붙어 점선 밑줄인 용어와 구분됩니다.
 - PDF·llms.txt: `lib/glossary.ts`의 `stripTerms`로 토큰을 표시 문구로 치환합니다. 경력기술서 PDF 끝에는 본문에 쓰인 용어만 모은 "용어 설명" 부록이 붙습니다.
 
 ## 실시간 시세 hovercard

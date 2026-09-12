@@ -189,3 +189,32 @@ a {
     border-bottom: none;
   }
 }
+
+/* external links: solid key-colored underline + chevron, distinct from dotted glossary terms */
+.ext {
+  color: var(--color-fg);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-key) 55%, transparent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.ext::after {
+  content: '';
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-left: 0.22em;
+  vertical-align: 0.05em;
+  background-color: var(--color-key);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.ext:hover {
+  color: var(--color-key);
+  text-decoration-color: var(--color-key);
+}
+@media print {
+  .ext::after {
+    display: none;
+  }
+}

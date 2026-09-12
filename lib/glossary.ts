@@ -28,6 +28,26 @@ export function stripTerms(text: string, locale: Locale) {
     .replace(PRICE_RE, (_, _kind: string, _spec: string, label: string) => label)
 }
 
+/** Plain text with only term markers replaced; price markers are kept. */
+export function stripTermTokens(text: string, locale: Locale) {
+  return text.replace(TERM_RE, (_, id: string, label?: string) => termLabel(id, locale, label))
+}
+
+/**
+ * Keep each glossary term clickable only where it first appears. Walks the
+ * strings in reading order and turns repeated [[id]] markers into plain labels,
+ * so a page explains a term once instead of underlining it everywhere.
+ */
+export function firstOccurrenceOnly(texts: string[], locale: Locale, seen = new Set<string>()) {
+  return texts.map((t) =>
+    t.replace(TERM_RE, (whole, id: string, label?: string) => {
+      if (seen.has(id)) return termLabel(id, locale, label)
+      seen.add(id)
+      return whole
+    }),
+  )
+}
+
 /** Every glossary id referenced in the given strings, in first-seen order. */
 export function collectTerms(texts: string[]) {
   const seen = new Set<string>()

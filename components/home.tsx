@@ -3,6 +3,7 @@ import { Icon } from '@/components/icons'
 import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
 import { SOURCE_LABEL, getCv, getUi, localePath, period, posts } from '@/lib/data'
+import { firstOccurrenceOnly } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
 function H({ children }: { children: React.ReactNode }) {
@@ -13,8 +14,13 @@ export function Home({ locale }: { locale: Locale }) {
   const cv = getCv(locale)
   const ui = getUi(locale)
   const { profile } = cv
-  const main = cv.experiences.filter((e) => !e.compact)
-  const earlier = cv.experiences.filter((e) => e.compact)
+  const seen = new Set<string>()
+  const dedupe = (e: (typeof cv.experiences)[number]) => {
+    const [oneLiner, ...bullets] = firstOccurrenceOnly([e.oneLiner, ...e.bullets], locale, seen)
+    return { ...e, oneLiner, bullets }
+  }
+  const main = cv.experiences.filter((e) => !e.compact).map(dedupe)
+  const earlier = cv.experiences.filter((e) => e.compact).map(dedupe)
 
   return (
     <Shell locale={locale}>
@@ -72,7 +78,7 @@ export function Home({ locale }: { locale: Locale }) {
                     <span className="ml-2 text-[1.05rem]">
                       ·{' '}
                       {e.url ? (
-                        <a href={e.url} target="_blank" rel="noreferrer" className="u">
+                        <a href={e.url} target="_blank" rel="noreferrer" className="ext">
                           {e.project}
                         </a>
                       ) : (
@@ -133,7 +139,7 @@ export function Home({ locale }: { locale: Locale }) {
           <ul className="space-y-3">
             {posts.map((p) => (
               <li key={p.id} className="flex items-baseline justify-between gap-4">
-                <a href={p.url} target="_blank" rel="noreferrer" className="u min-w-0">
+                <a href={p.url} target="_blank" rel="noreferrer" className="ext min-w-0">
                   {p.title}
                 </a>
                 <span className="shrink-0 text-sm text-dim">

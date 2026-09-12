@@ -21,7 +21,7 @@
     "cvTitle": "이력서",
     "portfolioTitle": "경력기술서",
     "noPosts": "아직 등록된 글이 없습니다.",
-    "explorer": "스캐너에서 보기 ↗",
+    "explorer": "스캐너에서 보기",
     "preview": "미리보기",
     "downloadPdf": "PDF 다운로드",
     "previewHint": "아래는 PDF와 동일한 내용입니다."
@@ -48,7 +48,7 @@
     "cvTitle": "Curriculum Vitae",
     "portfolioTitle": "Portfolio",
     "noPosts": "No posts yet.",
-    "explorer": "View on explorer ↗",
+    "explorer": "View on explorer",
     "preview": "Preview",
     "downloadPdf": "Download PDF",
     "previewHint": "This preview matches the PDF."
