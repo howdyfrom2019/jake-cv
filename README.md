@@ -63,7 +63,7 @@ OG 메타(제목, 요약, 발행일)를 읽어 `data/posts.json`에 넣고 호�
 
 ## 실시간 시세 hovercard
 
-본문의 `{{price:ETH:104.65|ETH 104.65}}`, `{{basket:USDC=72500,ETH=104.65,...|약 $1.5M}}` 토큰은 마우스를 올리면 Binance 공개 API(`/api/v3/ticker/price`)에서 현재가를 받아 달러로 환산해 보여줍니다(`components/price-hover.tsx`, 60초 캐시, USDC/USDT는 1달러 고정). PDF·llms.txt에서는 라벨 문구만 남습니다.
+본문의 `{{price:ETH:104.65|ETH 104.65}}`, `{{basket:USDC=72500,ETH=104.65,...|약 $1.5M}}` 토큰은 마우스를 올리면 Binance 공개 API(`/api/v3/ticker/price`)에서 현재가를 받아 달러로 환산해 보여줍니다(`components/price-hover.tsx`, 60초 캐시, USDC/USDT는 1달러 고정). 카드는 `document.body`에 포탈로 렌더되고 앵커의 `getBoundingClientRect()`를 기준으로 위치를 계산해 뷰포트 바깥으로 나가지 않도록 좌우/상하로 클램프합니다(모바일 포함). PDF·llms.txt에서는 라벨 문구만 남습니다.
 
 ## AI 에이전트 친화 (llms.txt)
 
