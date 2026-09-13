@@ -4,15 +4,37 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import { glossary, termLabel } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
-type Ctx = { open: (id: string) => void; locale: Locale }
+type Ctx = { open: (id: string) => void; toggleAll: () => void; hasTerms: boolean; locale: Locale }
 const GlossaryCtx = createContext<Ctx | null>(null)
 
 const UI = {
-  ko: { title: 'glossary', hint: '밑줄 친 용어를 누르면 여기서 설명합니다.', close: '닫기', related: '관련', clear: '지우기' },
-  en: { title: 'glossary', hint: 'Click an underlined term to see it explained here.', close: 'close', related: 'related', clear: 'clear' },
+  ko: {
+    title: 'glossary',
+    close: '닫기',
+    related: '관련',
+    clear: '지우기',
+    toggleLabel: '용어',
+    toggleHint: '이 페이지의 용어 전체 보기',
+  },
+  en: {
+    title: 'glossary',
+    close: 'close',
+    related: 'related',
+    clear: 'clear',
+    toggleLabel: 'Glossary',
+    toggleHint: 'Show every term on this page',
+  },
 }
 
-export function GlossaryProvider({ locale, children }: { locale: Locale; children: React.ReactNode }) {
+export function GlossaryProvider({
+  locale,
+  pageTerms = [],
+  children,
+}: {
+  locale: Locale
+  pageTerms?: string[]
+  children: React.ReactNode
+}) {
   const [history, setHistory] = useState<string[]>([])
   const [visible, setVisible] = useState(false)
   const bodyRef = useRef<HTMLDivElement>(null)
@@ -22,6 +44,31 @@ export function GlossaryProvider({ locale, children }: { locale: Locale; childre
     setHistory((h) => (h[h.length - 1] === id ? h : [...h.slice(-7), id]))
     setVisible(true)
   }, [])
+
+  // "Show everything" toggle: closes if open, otherwise replaces history with
+  // every term on the page. Kept as one state transition per click/keypress.
+  const onToggleAllClick = useCallback(() => {
+    setVisible((v) => {
+      const next = !v
+      if (next && pageTerms.length > 0) setHistory(pageTerms)
+      return next
+    })
+  }, [pageTerms])
+
+  // Global "G" shortcut: toggle the full-page glossary. Ignored while
+  // typing, or with a modifier held (so it never fights a browser/OS shortcut).
+  useEffect(() => {
+    if (pageTerms.length === 0) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() !== 'g' || e.metaKey || e.ctrlKey || e.altKey) return
+      const el = e.target as HTMLElement | null
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return
+      e.preventDefault()
+      onToggleAllClick()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [pageTerms, onToggleAllClick])
 
   useEffect(() => {
     if (!visible) return
@@ -39,7 +86,7 @@ export function GlossaryProvider({ locale, children }: { locale: Locale; childre
   const t = UI[locale]
 
   return (
-    <GlossaryCtx.Provider value={{ open, locale }}>
+    <GlossaryCtx.Provider value={{ open, toggleAll: onToggleAllClick, hasTerms: pageTerms.length > 0, locale }}>
       {children}
       {visible && (
         <aside
@@ -51,6 +98,7 @@ export function GlossaryProvider({ locale, children }: { locale: Locale; childre
             <span className="flex items-center gap-2">
               <span className="inline-block h-2 w-2 rounded-full bg-key" />
               {t.title} · {locale}
+              {history.length > 1 && <span>· {history.length}</span>}
             </span>
             <span className="flex items-center gap-3">
               {history.length > 1 && (
@@ -111,6 +159,24 @@ export function Term({ id, children }: { id: string; children: React.ReactNode }
       title={glossary[id].term[ctx.locale]}
     >
       {children}
+    </button>
+  )
+}
+
+/** Header control that opens the full glossary for the current page. Also bound to the "G" key. */
+export function GlossaryToggle() {
+  const ctx = useContext(GlossaryCtx)
+  if (!ctx || !ctx.hasTerms) return null
+  const t = UI[ctx.locale]
+  return (
+    <button
+      type="button"
+      onClick={ctx.toggleAll}
+      title={t.toggleHint}
+      className="inline-flex items-center gap-1.5 hover:text-fg"
+    >
+      {t.toggleLabel}
+      <kbd className="rounded border border-line px-1 font-mono text-[10px] leading-[14px] text-dim">G</kbd>
     </button>
   )
 }

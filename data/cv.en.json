@@ -250,24 +250,24 @@
       "current": false,
       "oneLiner": "Web3 arm of game studio 111percent. Joined after a month of remote handover, now the sole frontend engineer.",
       "bullets": [
-        "Distributed the TGE token airdrop claim page's requests across 10 public JSON-RPC nodes, running with zero dev-side CS issues. Listed on Binance Alpha, Coinone, Bitget.",
+        "Distributed the [[tge|TGE]] token airdrop claim page's requests across 10 public [[json-rpc|JSON-RPC]] nodes, running with zero dev-side CS issues. Listed on Binance Alpha, Coinone, Bitget.",
         "Built a reward app (React Native + Expo, Admob) and a matching PWA in parallel. Also designed a casual-clicker-plus-betting blockchain game, an NFT staking site, and an outsourced mini-game, solo."
       ],
       "detail": {
         "description": "Built the web and app platform for Gomble, the Web3 division of Korea's top mobile game studio, 111percent. Spent a month remote before joining, handing over a token-airdrop project tied to exchange listings (Binance Alpha, Coinone, Bitget), then took over as the sole frontend engineer handling business requirements.",
         "impact": [
-          "Zero dev-side CS issues on the token airdrop (TGE) claim page.",
-          "Designed a dApp that kept wallet connection and transaction delivery stable through a TGE with more than 10,000 daily spike requests."
+          "Zero dev-side CS issues on the token airdrop ([[tge|TGE]]) claim page.",
+          "Designed a dApp that kept wallet connection and transaction delivery stable through a [[tge|TGE]] with more than 10,000 daily spike requests."
         ],
         "projects": [
           {
             "title": "TGE page (token airdrop)",
             "period": "2025.03 – 2025.04",
-            "problem": "A claim page timed to an exchange listing draws a traffic spike that a single RPC node can't absorb without breaking wallet connections and transaction delivery, and the Linear Cliff Vesting schedule needed to be legible to non-technical users.",
+            "problem": "A claim page timed to an exchange listing draws a traffic spike that a single RPC node can't absorb without breaking wallet connections and transaction delivery, and the [[vesting|Linear Cliff Vesting]] schedule needed to be legible to non-technical users.",
             "approach": [
-              "Distributed requests across 10 public JSON-RPC node addresses.",
+              "Distributed requests across 10 public [[json-rpc|JSON-RPC]] node addresses.",
               "Applied UX writing in Wagmi that anticipates chain/wallet switches, keeping wallet connection and transaction delivery stable.",
-              "Built a readable time-display UI for the Linear Cliff Vesting schedule."
+              "Built a readable time-display UI for the [[vesting|Linear Cliff Vesting]] schedule."
             ]
           },
           {
@@ -316,7 +316,7 @@
       "oneLiner": "A monthly-refreshed blockchain game mission platform, a GXC spin-off built by a two-person team.",
       "bullets": [
         "Joined at the team-building stage; owned the website, NFT smart contracts, and purchase/burn verification logic. Built the social-verification mission platform that earned 10K+ USDT.",
-        "Two-person team, paired with one backend/infra engineer. Turborepo monorepo, Thirdweb whitelisting, OAuth for Twitter, Epic Games, and Discord."
+        "Two-person team, paired with one backend/infra engineer. Turborepo [[monorepo|monorepo]], Thirdweb [[whitelist|whitelisting]], OAuth for Twitter, Epic Games, and Discord."
       ],
       "detail": {
         "description": "xCBT, a spin-off team set up by GXC Inc., built with blockchain specialists from Round Ventures and Pentachora Labs. An early blockchain-only mission platform: users who buy an NFT earn points over a two-week mission period, and top-ranked players win USDT-based rewards. Joined at the team-building stage and owned the website plus NFT smart contracts and purchase/burn verification logic, paired with one teammate who owned backend and infra.",
@@ -328,8 +328,8 @@
             "title": "xCBT platform development",
             "period": "2025.01 – 2025.04",
             "approach": [
-              "Turborepo monorepo covering both the admin page and the client app.",
-              "USDT (ERC-20) based NFT minting, with Thirdweb handling whitelist-gated purchases.",
+              "Turborepo [[monorepo|monorepo]] covering both the admin page and the client app.",
+              "USDT (ERC-20) based NFT minting, with Thirdweb handling [[whitelist|whitelist]]-gated purchases.",
               "OAuth for Twitter, Epic Games, and Discord in Next.js. Worked out a Twitter OAuth approach next-auth didn't cover out of the box.",
               "Raffle screen ahead of ticket purchase; reward structure paying USDT, next-season tickets, and xCBT tokens by leaderboard rank."
             ]
@@ -351,7 +351,7 @@
       "current": false,
       "oneLiner": "Linea's largest GameFi platform, helping Web2 games move to Web3. Technical collaboration with wallet teams including Consensys (MetaMask).",
       "bullets": [
-        "User count up 20,000%+ after the rebrand, with 1.38M+ monthly transactions and $152.73K+ monthly volume. Ranked #26 overall on DappRadar's gaming sector and #1 on Linea (April 2024).",
+        "User count up 20,000%+ after the rebrand, with 1.38M+ monthly transactions and $152.73K+ monthly volume. Ranked #26 overall on [[dappradar|DappRadar]]'s gaming sector and #1 on Linea (April 2024).",
         "Sold out an 8,888-piece NFT collection in a week, grossing 300M+ KRW. Collaborated in written English with MetaMask (Consensys), Unisat, and Facewallet on bug and improvement reports.",
         "Split the design system into an npm library (catze-ui) and migrated styled-components to Tailwind. Cut the operational kill switch time by 10+ minutes via the back office."
       ],
@@ -359,7 +359,7 @@
         "description": "Frontend for Yooldo, a blockchain gaming platform that helps Web2 games transition to Web3, plus game onboarding support. Yooldo is Linea's largest GameFi platform; its ESPORTS token is listed on Binance Alpha, Bitget, MEXC, and other major exchanges.",
         "impact": [
           "User count up 20,000%+ after the rebrand (2023.07–11). 1.38M+ monthly transactions, $152.73K+ monthly volume.",
-          "Ranked #26 overall on DappRadar's gaming sector and #1 on Linea as of April 2024.",
+          "Ranked #26 overall on [[dappradar|DappRadar]]'s gaming sector and #1 on Linea as of April 2024.",
           "The Yooldo x Linea Park cross-chain event brought in about 750,000 new users. Resolved traffic-driven issues including Vercel image-optimization costs and bandwidth overruns.",
           "Sold out an 8,888-piece collection in a week, grossing 300M+ KRW. Ran NFT campaigns with chains including Kroma, Astar, and Manta Network.",
           "Exchanged written English bug and improvement reports with MetaMask (Consensys), Unisat Wallet, and HaechiLabs' Facewallet team."

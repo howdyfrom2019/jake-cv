@@ -1,17 +1,25 @@
 import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
 import { getCv, getUi, periodMonth } from '@/lib/data'
-import { firstOccurrenceOnly, stripTermTokens } from '@/lib/glossary'
+import { collectTerms, firstOccurrenceOnly, stripTermTokens } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
 export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
   const cv = getCv(locale)
   const ui = getUi(locale)
   const e = cv.experiences.find((x) => x.id === id)!
-  const seen = new Set<string>()
+  const firstProject = e.detail.projects[0]
   // Glossary links live only where a reader first meets the jargon: the
   // description, the impact list, and the first project. Later projects are
-  // plain text so the page stays readable.
+  // plain text so the page stays readable. pageTerms mirrors exactly that
+  // scope, for the header toggle / "G" shortcut's full-page list.
+  const pageTerms = collectTerms([
+    e.detail.description,
+    ...e.detail.impact,
+    firstProject?.problem ?? '',
+    ...(firstProject?.approach ?? []),
+  ])
+  const seen = new Set<string>()
   const [description, ...impact] = firstOccurrenceOnly([e.detail.description, ...e.detail.impact], locale, seen)
   const projects = e.detail.projects.map((p, i) => {
     if (i === 0) {
@@ -27,7 +35,7 @@ export function WorkDetail({ locale, id }: { locale: Locale; id: string }) {
   const d = { ...e.detail, description, impact, projects }
 
   return (
-    <Shell locale={locale} backHref={`/work/${id}`}>
+    <Shell locale={locale} backHref={`/work/${id}`} pageTerms={pageTerms}>
       <header>
         <p className="text-sm text-dim">{periodMonth(e.start, e.end, e.current, ui.now)}</p>
         <h1 className="mt-1 text-[1.6rem] font-semibold tracking-tight">

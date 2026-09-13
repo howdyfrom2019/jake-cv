@@ -3,7 +3,7 @@ import { Icon } from '@/components/icons'
 import { RichText } from '@/components/rich-text'
 import { Shell } from '@/components/shell'
 import { SOURCE_LABEL, getCv, getUi, localePath, period, posts } from '@/lib/data'
-import { firstOccurrenceOnly } from '@/lib/glossary'
+import { collectTerms, firstOccurrenceOnly } from '@/lib/glossary'
 import type { Locale } from '@/lib/types'
 
 function H({ children }: { children: React.ReactNode }) {
@@ -14,6 +14,9 @@ export function Home({ locale }: { locale: Locale }) {
   const cv = getCv(locale)
   const ui = getUi(locale)
   const { profile } = cv
+  // Full-page glossary (for the header toggle / "G" shortcut) is collected
+  // from the raw content, before firstOccurrenceOnly below strips repeats.
+  const pageTerms = collectTerms(cv.experiences.flatMap((e) => [e.oneLiner, ...e.bullets]))
   const seen = new Set<string>()
   const dedupe = (e: (typeof cv.experiences)[number]) => {
     const [oneLiner, ...bullets] = firstOccurrenceOnly([e.oneLiner, ...e.bullets], locale, seen)
@@ -23,7 +26,7 @@ export function Home({ locale }: { locale: Locale }) {
   const earlier = cv.experiences.filter((e) => e.compact).map(dedupe)
 
   return (
-    <Shell locale={locale}>
+    <Shell locale={locale} pageTerms={pageTerms}>
       <header>
         <h1 className="text-[1.6rem] font-semibold tracking-tight">
           {profile.name} <span className="text-dim font-normal">{profile.altName}</span>

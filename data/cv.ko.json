@@ -250,24 +250,24 @@
       "current": false,
       "oneLiner": "게임 스튜디오 111퍼센트의 Web3 사업부. 합류 전 한 달 원격 인수인계 후 1인 프론트엔드 개발.",
       "bullets": [
-        "TGE 토큰 에어드랍 페이지를 10개의 Public JSON-RPC 노드로 분산 요청 처리해 개발 CS 이슈 0건 달성. Binance Alpha, 코인원, Bitget 상장.",
+        "[[tge|TGE]] 토큰 에어드랍 페이지를 10개의 Public [[json-rpc|JSON-RPC]] 노드로 분산 요청 처리해 개발 CS 이슈 0건 달성. Binance Alpha, 코인원, Bitget 상장.",
         "리워드앱(React Native+Expo, Admob)과 동일 UI의 PWA를 동시 개발. 캐주얼 클리커+베팅을 결합한 블록체인 게임 설계, NFT 스테이킹 웹사이트, 아웃소싱 미니게임까지 1인 대응."
       ],
       "detail": {
         "description": "국내 1위 모바일 게임 스튜디오 111퍼센트의 Web3 사업부, 곰블 프로젝트의 웹/앱 플랫폼을 개발했습니다. 합류 전 한 달간 원격으로 거래소 상장(Binance Alpha, 코인원, Bitget) 토큰 에어드랍 프로젝트 인수인계를 받았고, 이후 1인 프론트엔드로 사업 요구사항을 대응하고 있습니다.",
         "impact": [
-          "토큰 에어드랍(TGE) 페이지 운영 중 개발 CS 이슈 0건.",
-          "하루 1만 건 이상의 스파이크 트래픽이 몰리는 TGE 상황에서 안정적인 지갑 연결과 트랜잭션 전송을 보장하는 dApp 설계."
+          "토큰 에어드랍([[tge|TGE]]) 페이지 운영 중 개발 CS 이슈 0건.",
+          "하루 1만 건 이상의 스파이크 트래픽이 몰리는 [[tge|TGE]] 상황에서 안정적인 지갑 연결과 트랜잭션 전송을 보장하는 dApp 설계."
         ],
         "projects": [
           {
             "title": "TGE 페이지 (토큰 에어드랍)",
             "period": "2025.03 – 2025.04",
-            "problem": "거래소 상장과 동시에 대량 트래픽이 몰리는 클레임 페이지에서 단일 RPC 노드로는 요청이 몰려 지갑 연결과 트랜잭션 전송이 끊길 위험이 있었고, Linear Cliff Vesting 일정을 사용자가 이해하기 쉽게 보여줘야 했습니다.",
+            "problem": "거래소 상장과 동시에 대량 트래픽이 몰리는 클레임 페이지에서 단일 RPC 노드로는 요청이 몰려 지갑 연결과 트랜잭션 전송이 끊길 위험이 있었고, [[vesting|Linear Cliff Vesting]] 일정을 사용자가 이해하기 쉽게 보여줘야 했습니다.",
             "approach": [
-              "10개의 Public JSON-RPC 노드 주소를 사용한 분산 요청 로직 개발.",
+              "10개의 Public [[json-rpc|JSON-RPC]] 노드 주소를 사용한 분산 요청 로직 개발.",
               "Wagmi로 체인·지갑 변경을 상정한 UX Writing을 적용해 안정적인 지갑 연결과 트랜잭션 전송 환경 제공.",
-              "Linear Cliff Vesting 환경의 복잡한 시간 표기를 사용자가 이해하기 쉬운 디스플레이 UI로 구현."
+              "[[vesting|Linear Cliff Vesting]] 환경의 복잡한 시간 표기를 사용자가 이해하기 쉬운 디스플레이 UI로 구현."
             ]
           },
           {
@@ -316,7 +316,7 @@
       "oneLiner": "매달 새 블록체인 게임을 미리 해보고 보상을 받는 미션 플랫폼. GXC 스핀오프 팀, 2인 개발.",
       "bullets": [
         "팀 빌딩 단계부터 합류해 웹사이트, NFT 스마트 컨트랙트, 구매·소각 검증 로직을 담당. 10K+ USDT 이상 수익을 낸 SNS 인증 미션 플랫폼 개발.",
-        "백엔드·인프라 담당 1인과 페어로 2인 개발. Turborepo 모노레포, Thirdweb 화이트리스트, 트위터·에픽게임즈·디스코드 OAuth."
+        "백엔드·인프라 담당 1인과 페어로 2인 개발. Turborepo [[monorepo|모노레포]], Thirdweb [[whitelist|화이트리스트]], 트위터·에픽게임즈·디스코드 OAuth."
       ],
       "detail": {
         "description": "지엑스씨(GXC Inc.) 주도로 설립된 스핀오프 팀 xCBT. Round Ventures, Pentachora Labs의 블록체인 전문가들과 함께 만든 초기 블록체인 미션 플랫폼입니다. NFT를 구매한 유저가 2주간 인게임 미션으로 포인트를 쌓고, 상위 랭커는 USDT 기반 보상을 받습니다. 팀 빌딩부터 합류해 웹사이트 구축과 NFT 스마트 컨트랙트, 구매·소각 검증 로직을 담당했습니다. 백엔드·인프라를 맡은 팀원 1인과 2인 페어로 개발했습니다.",
@@ -328,8 +328,8 @@
             "title": "xCBT 플랫폼 개발",
             "period": "2025.01 – 2025.04",
             "approach": [
-              "Turborepo 기반 모노레포로 어드민 페이지와 클라이언트 페이지를 함께 개발.",
-              "USDT(ERC-20) 기반 NFT 민팅과 Thirdweb을 사용한 화이트리스트 구매 제한 대응.",
+              "Turborepo 기반 [[monorepo|모노레포]]로 어드민 페이지와 클라이언트 페이지를 함께 개발.",
+              "USDT(ERC-20) 기반 NFT 민팅과 Thirdweb을 사용한 [[whitelist|화이트리스트]] 구매 제한 대응.",
               "Next.js로 트위터·에픽게임즈·디스코드 OAuth 인증 구현. next-auth에 없던 트위터 OAuth 처리 방식을 직접 제시.",
               "게임 티켓 구매 전 참여하는 래플 이벤트 화면, 포인트 리더보드에 따라 USDT·다음 시즌 티켓·xCBT 토큰을 지급하는 보상 구조 설계."
             ]
@@ -351,7 +351,7 @@
       "current": false,
       "oneLiner": "Web2 게임의 Web3 전환을 돕는 Linea 최대 GameFi 플랫폼. Consensys(MetaMask) 등 지갑 팀과 기술 협업.",
       "bullets": [
-        "리브랜딩 이후 사용자수 20,000%+ 증가, 월간 트랜잭션 1.38M+, 월간 거래량 $152.73K+. DappRadar 게이밍 섹터 26위·Linea 1위(2024.04) 기록.",
+        "리브랜딩 이후 사용자수 20,000%+ 증가, 월간 트랜잭션 1.38M+, 월간 거래량 $152.73K+. [[dappradar|DappRadar]] 게이밍 섹터 26위·Linea 1위(2024.04) 기록.",
         "8,888개 NFT 컬렉션을 일주일 만에 완판해 3억 원 이상 수익. MetaMask(Consensys)·Unisat·Facewallet 팀과 영문 기술 리포트로 협업.",
         "디자인 시스템을 npm 라이브러리(catze-ui)로 분리하고 styled-components → Tailwind 전환. 백오피스로 운영 kill switch를 10분 이상 단축."
       ],
@@ -359,7 +359,7 @@
         "description": "Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo와 게임 온보딩을 지원했습니다. Yooldo는 Linea 체인 최대 규모의 GameFi 플랫폼으로, ESPORTS 토큰이 Binance Alpha·Bitget·MEXC 등 주요 거래소에 상장돼 있습니다.",
         "impact": [
           "리브랜딩(2023.07~11) 이후 사용자수 20,000%+ 증가. 월간 트랜잭션 1.38M+, 월간 거래량 $152.73K+.",
-          "2024.04 기준 DappRadar 게이밍 섹터 전체 26위, Linea 생태계 1위 트래픽 기록.",
+          "2024.04 기준 [[dappradar|DappRadar]] 게이밍 섹터 전체 26위, Linea 생태계 1위 트래픽 기록.",
           "Yooldo x Linea Park 체인 협업 이벤트로 신규 유저 약 75만 명 유입. 대규모 트래픽으로 인한 Vercel 이미지 최적화 비용·bandwidth 초과 문제를 해소.",
           "8,888개 컬렉션을 일주일 만에 완판해 3억 원 이상 수익. Kroma·Astar·Manta Network 등 체인과 NFT 캠페인 협업.",
           "MetaMask를 운영하는 Consensys, Unisat 월렛, HaechiLabs의 Facewallet 팀과 영문 서면으로 버그·개선사항 리포트를 주고받으며 기술 협업."
