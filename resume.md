@@ -127,11 +127,12 @@ Abstract 체인 위에서 동작하는 로그라이크 지뢰찾기 온체인 �
 
 **2025.04 ~ `[확인 필요: 종료 시점]`**
 
-국내 게임 스튜디오 111퍼센트의 Web3 사업부, 곰블 프로젝트의 웹/앱 플랫폼 개발을 담당했습니다.
+국내 1위 모바일 게임 스튜디오 111퍼센트의 Web3 사업부, 곰블 프로젝트의 웹/앱 플랫폼 개발을 담당했습니다. 합류 전 한 달간 원격으로 거래소 상장(Binance Alpha, 코인원, Bitget) 토큰 에어드랍 프로젝트 인수인계를 받았고, 이후 1인 프론트엔드로 사업 요구사항을 대응하고 있습니다.
 
-- 광고 보고 보상 받는 리워드앱의 모바일 네이티브 앱과 PWA 개발.
-- NFT를 인증·스테이킹하고 NFT 게임 제작을 의뢰하는 커뮤니티 웹사이트 프론트엔드 개발.
-- 베팅 기반 블록체인 게임 스마트 컨트랙트 개발 (Proxy 패턴을 적용한 업그레이드 가능한 컨트랙트).
+- TGE 토큰 에어드랍 페이지를 10개의 Public JSON-RPC 노드로 분산 요청 처리해 개발 CS 이슈 0건 달성. Wagmi 기반 UX Writing으로 체인·지갑 변경에도 안정적인 지갑 연결·트랜잭션 전송 제공. Linear Cliff Vesting 시간 표기 UI 구현.
+- 캐주얼 클리커 + 결과 베팅을 결합한 블록체인 게임을 Solidity로 설계(스테이킹 + 보상 구조 컨트랙트 포함).
+- 리워드앱(React Native + Expo, Admob)과 동일 UI의 PWA(Vite-pwa)를 병행 개발해 스토어 심사 없이 빠르게 반복.
+- NFT 인증·스테이킹 커뮤니티 웹, NFT 스테이킹/언스테이킹 웹사이트, 아웃소싱 미니게임(펭귄 얼음깨기)까지 1인 대응.
 - Binance Alpha, 코인원, Bitget에 상장한 $GM 토큰 클레임 웹사이트 개발.
 
 기술: React.js, TypeScript, Vite, Bun, Vite-pwa, React Native, Expo, Viem, Ethers, Wagmi, WalletConnect, Hardhat, Solidity, AWS S3 + Route53, Vercel
@@ -140,13 +141,14 @@ Abstract 체인 위에서 동작하는 로그라이크 지뢰찾기 온체인 �
 
 ### 지엑스씨 · xCBT · Blockchain Engineer
 
-**2024.10 ~ 2025.04 (7개월)**
+**2024.10 ~ 2025.04 (7개월)** · 프리랜서, 2인 개발
 
-한 달마다 출시되는 블록체인 게임을 미리 해보고 경쟁적인 보상을 받는 플랫폼 xCBT의 스마트 컨트랙트 개발·검증과 프론트엔드 상호작용을 담당했습니다.
+지엑스씨(GXC Inc.) 주도로 설립된 스핀오프 팀 xCBT. Round Ventures, Pentachora Labs의 블록체인 전문가들과 함께 만든, 한 달마다 출시되는 블록체인 게임을 미리 해보고 경쟁적인 보상을 받는 미션 플랫폼입니다. 팀 빌딩 단계부터 합류해 웹사이트 구축과 NFT 스마트 컨트랙트, 구매·소각 검증 로직을 담당했습니다. 백엔드·인프라를 맡은 팀원 1인과 2인 페어로 개발했습니다.
 
-- 10K+ USDT 이상 수익을 낸 SNS 인증 미션 플랫폼 기능 개발.
-- NFT 관련 스마트 컨트랙트 코드 작성과 업데이트.
-- 클라이언트·백오피스가 통합된 모노레포 작업.
+- 10K+ USDT 이상 수익을 낸 SNS 인증(Xociety) 미션 플랫폼 기능 개발.
+- USDT(ERC-20) 기반 NFT 민팅, Thirdweb 화이트리스트 구매 제한 대응.
+- Next.js로 트위터·에픽게임즈·디스코드 OAuth 구현. next-auth에 없던 트위터 OAuth 처리 방식을 직접 제시.
+- Turborepo 기반 모노레포로 어드민·클라이언트 페이지 통합 개발.
 
 기술: TypeScript, Next.js, Tailwind CSS, Framer Motion, pnpm, Turborepo, Solidity, Hardhat, Viem, Thirdweb, Abstract Global Wallet
 
@@ -156,14 +158,15 @@ Abstract 체인 위에서 동작하는 로그라이크 지뢰찾기 온체인 �
 
 **2023.04 ~ 2024.10 (1년 7개월)**
 
-Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo(https://www.yooldo.gg)와 게임 온보딩을 지원했습니다.
+Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo(https://www.yooldo.gg)와 게임 온보딩을 지원했습니다. Yooldo는 Linea 체인 최대 규모의 GameFi 플랫폼으로, ESPORTS 토큰이 Binance Alpha·Bitget·MEXC 등 주요 거래소에 상장돼 있습니다.
 
-- 블록체인 게이밍 플랫폼에 90만 명 이상의 유저를 온보딩.
-- NFT 구매·검증 UX 설계 참여 등으로 월 최대 15만 달러 이상의 프로젝트 수익화.
-- MetaMask를 운영하는 Consensys로부터 투자 유치에 기여.
-- 한화 3억 원 이상 수익을 낸 8종 이상의 자체 NFT 민팅 페이지 구축과 온체인 이벤트 대응.
-- 트랜잭션 영수증 분석을 통한 게임 재화 획득 트랜잭션 검증 로직 개발.
-- 백오피스 기능 개발, 공통 UI 컴포넌트 npm 라이브러리 출시 및 관리.
+- 리브랜딩(2023.07~11) 이후 사용자수 20,000%+ 증가. 월간 트랜잭션 1.38M+, 월간 거래량 $152.73K+. 2024.04 기준 DappRadar 게이밍 섹터 전체 26위, Linea 생태계 1위 트래픽.
+- Yooldo x 리니아 파크 체인 협업 이벤트로 신규 유저 약 75만 명 유입. 서버측 트랜잭션 실행을 클라이언트측 실행+영수증 검증으로 바꿔 대규모 트래픽 부하를 낮춤.
+- 8,888개 NFT 컬렉션을 일주일 만에 완판해 3억 원 이상 수익. MetaMask(Consensys)·Unisat 월렛·Facewallet(HaechiLabs) 팀과 영문 서면으로 버그·개선사항을 주고받으며 기술 협업.
+- 디자인 시스템을 npm 라이브러리(catze-ui)로 분리, styled-components → Tailwind CSS 전환, SSR 도입, 토큰 저장을 localStorage → 쿠키로 이전.
+- 딥링크 로그인(yooldo://game/troublepunk)과 백오피스 S3 해시 추적으로 게임 클라이언트 변조 감지.
+- 백오피스로 운영 kill switch 10분+ 단축. Jury DAO(탈중앙화 어뷰징 신고 시스템), BRC-20 브릿지 구축·운영.
+- 트랜잭션 영수증 분석을 통한 게임 재화 획득 검증 로직 개발.
 
 기술: TypeScript, Next.js, TanStack Query, Framer Motion, Storybook, Node.js, Nest.js, Prisma, Viem, Wagmi, Vercel, GitHub Actions
 
@@ -171,13 +174,14 @@ Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo(htt
 
 ### 블루포인트파트너스 · Frontend Engineer
 
-**2021.07 ~ 2022.03 (9개월)**
+**2021.07 ~ 2022.02 (8개월: 인턴 6개월 + 계약직 2개월)**
 
-시드·pre-A 단계 테크 스타트업 전문 액셀러레이터.
+시드·pre-A 단계 테크 스타트업 전문 액셀러레이터. 6개월 인턴 후 2개월 계약직으로 전환해 근무했습니다.
 
-- 3일 이상 소요되던 투자계약 준비 운영 작업 자동화.
-- 팀마다 분산 관리되던 투자 포트폴리오를 인하우스 툴로 통합.
-- 투자 심사역 사용자 인터뷰를 통한 스타트업 발굴 UX 개선, recharts 기반 데이터 시각화.
+- 3일 이상 소요되던 투자계약 문서 준비를 자동 생성 기능으로 1초 이내로 단축.
+- 팀마다 엑셀로 분산 관리되던 투자 분야별 데이터를 취합해 시계열·장소별 차트로 시각화.
+- 투자 심사역 사용자 인터뷰를 통한 스타트업 발굴 과정 UX 개선.
+- 홈페이지 투자 제안 유입을 Slack 채널과 연동하는 알림 서비스 구축.
 
 기술: TypeScript, React.js, Jest, recharts, styled-components, AWS S3 + Route53
 
@@ -185,11 +189,15 @@ Web2 게임의 Web3 전환을 돕는 블록체인 게이밍 플랫폼 Yooldo(htt
 
 ### 테이스팅벤처 · FOUND · Founder
 
-**2018.12 ~ 2019.06 (7개월)**
+**2018.12 ~ 2019.06 (7개월)** · 서비스 자체는 2020.02까지 운영
 
-GPS 기반 분실물 습득/보상 모바일 플랫폼 FOUND 개발. 플레이스토어 5천 다운로드.
+GPS 기반 위치 서비스 연구소 스타트업 테이스팅벤처에서 분실물 습득/보상 모바일 플랫폼 FOUND를 개발했습니다. 용인·경기 지역에서 운영했고, 플레이스토어 5천 다운로드를 기록했습니다.
 
-기술: Java, Android Studio, Retrofit2, Glide, Python, Flask, MongoDB
+- Android Studio(Java), Retrofit, Glide를 사용한 습득물 리포트 기능 개발.
+- Angular, Ionic Framework를 사용한 하이브리드 앱 개발.
+- 카카오톡 챗봇 분실물 신고 + Flask/MongoDB 챗봇 서버 구축.
+
+기술: Java, Android Studio, Retrofit2, Glide, Angular, Ionic Framework, Python, Flask, MongoDB
 
 ---
 

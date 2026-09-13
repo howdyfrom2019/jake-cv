@@ -248,39 +248,53 @@
       "start": "2025-04",
       "end": null,
       "current": false,
-      "oneLiner": "Web3 arm of game studio 111percent. Reward app, NFT community, $GM token claim site.",
+      "oneLiner": "Web3 arm of game studio 111percent. Joined after a month of remote handover, now the sole frontend engineer.",
       "bullets": [
-        "Designed the token-claim dApp to keep wallet connection and transactions stable through a [[tge|TGE]] with 10k+ daily spikes. Listed on Binance Alpha, Coinone, Bitget.",
-        "Native app (React Native, Expo) and PWA for the ad-reward product, NFT verification and staking community site, upgradeable contracts for a betting game."
+        "Distributed the TGE token airdrop claim page's requests across 10 public JSON-RPC nodes, running with zero dev-side CS issues. Listed on Binance Alpha, Coinone, Bitget.",
+        "Built a reward app (React Native + Expo, Admob) and a matching PWA in parallel. Also designed a casual-clicker-plus-betting blockchain game, an NFT staking site, and an outsourced mini-game, solo."
       ],
       "detail": {
-        "description": "Built the web and app platform for Gomble, the Web3 division of Korean game studio 111percent.",
+        "description": "Built the web and app platform for Gomble, the Web3 division of Korea's top mobile game studio, 111percent. Spent a month remote before joining, handing over a token-airdrop project tied to exchange listings (Binance Alpha, Coinone, Bitget), then took over as the sole frontend engineer handling business requirements.",
         "impact": [
+          "Zero dev-side CS issues on the token airdrop (TGE) claim page.",
           "Designed a dApp that kept wallet connection and transaction delivery stable through a TGE with more than 10,000 daily spike requests."
         ],
         "projects": [
           {
-            "title": "Ad-reward app",
+            "title": "TGE page (token airdrop)",
+            "period": "2025.03 – 2025.04",
+            "problem": "A claim page timed to an exchange listing draws a traffic spike that a single RPC node can't absorb without breaking wallet connections and transaction delivery, and the Linear Cliff Vesting schedule needed to be legible to non-technical users.",
             "approach": [
-              "Native mobile app (React Native, Expo) and PWA."
+              "Distributed requests across 10 public JSON-RPC node addresses.",
+              "Applied UX writing in Wagmi that anticipates chain/wallet switches, keeping wallet connection and transaction delivery stable.",
+              "Built a readable time-display UI for the Linear Cliff Vesting schedule."
             ]
           },
           {
-            "title": "NFT community site",
+            "title": "iGaming project",
+            "period": "2025.04 – 2025.06",
             "approach": [
-              "NFT verification, staking, and a request flow for commissioning NFT games."
+              "Built a casual clicker-style game in React.js.",
+              "Designed and built a blockchain game combining a casual game with outcome betting, as a Solidity smart contract.",
+              "Wired the website to the contract; designed a staking-plus-Web3-game reward structure contract."
             ]
           },
           {
-            "title": "Betting game contracts",
+            "title": "Reward app",
+            "period": "2025.06 – 2025.07",
+            "problem": "A native app's store review and update cadence isn't fast enough on its own; a web channel that iterates without review was needed alongside it.",
             "approach": [
-              "Upgradeable smart contracts using the proxy pattern."
+              "Built an ad-based reward platform with Expo (React Native) and AdMob.",
+              "Built a matching PWA with React and Vite-pwa to iterate quickly without store review."
             ]
           },
           {
-            "title": "$GM token claim site",
+            "title": "Other projects",
             "approach": [
-              "Claim site for a token listed on Binance Alpha, Coinone, and Bitget."
+              "Built an outsourced penguin ice-breaking web game.",
+              "Built an NFT staking/unstaking website.",
+              "Frontend for an NFT verification and staking community that also takes NFT game commissions.",
+              "Built the $GM token claim site for a token listed on Binance Alpha, Coinone, and Bitget."
             ]
           }
         ],
@@ -299,22 +313,25 @@
       "start": "2024-10",
       "end": "2025-04",
       "current": false,
-      "oneLiner": "A platform where players test a new blockchain game every month and compete for rewards.",
+      "oneLiner": "A monthly-refreshed blockchain game mission platform, a GXC spin-off built by a two-person team.",
       "bullets": [
-        "Built the social-verification mission platform that earned 10K+ USDT. Wrote and updated NFT contracts, worked in a client + back-office monorepo."
+        "Joined at the team-building stage; owned the website, NFT smart contracts, and purchase/burn verification logic. Built the social-verification mission platform that earned 10K+ USDT.",
+        "Two-person team, paired with one backend/infra engineer. Turborepo monorepo, Thirdweb whitelisting, OAuth for Twitter, Epic Games, and Discord."
       ],
       "detail": {
-        "description": "Smart contract development and verification plus frontend integration for xCBT, a platform where players preview monthly blockchain game releases and compete for rewards.",
+        "description": "xCBT, a spin-off team set up by GXC Inc., built with blockchain specialists from Round Ventures and Pentachora Labs. An early blockchain-only mission platform: users who buy an NFT earn points over a two-week mission period, and top-ranked players win USDT-based rewards. Joined at the team-building stage and owned the website plus NFT smart contracts and purchase/burn verification logic, paired with one teammate who owned backend and infra.",
         "impact": [
-          "Built the social-verification mission platform that generated 10K+ USDT."
+          "10,000+ USDT in total payouts through the Xociety game mission."
         ],
         "projects": [
           {
-            "title": "Social-verification mission platform",
+            "title": "xCBT platform development",
+            "period": "2025.01 – 2025.04",
             "approach": [
-              "Mission features.",
-              "Wrote and updated NFT-related smart contracts.",
-              "Client and back-office monorepo (pnpm, Turborepo)."
+              "Turborepo monorepo covering both the admin page and the client app.",
+              "USDT (ERC-20) based NFT minting, with Thirdweb handling whitelist-gated purchases.",
+              "OAuth for Twitter, Epic Games, and Discord in Next.js. Worked out a Twitter OAuth approach next-auth didn't cover out of the box.",
+              "Raffle screen ahead of ticket purchase; reward structure paying USDT, next-season tickets, and xCBT tokens by leaderboard rank."
             ]
           }
         ],
@@ -332,26 +349,67 @@
       "start": "2023-04",
       "end": "2024-10",
       "current": false,
-      "oneLiner": "Blockchain gaming platform helping Web2 games move to Web3. Backed by Consensys.",
+      "oneLiner": "Linea's largest GameFi platform, helping Web2 games move to Web3. Technical collaboration with wallet teams including Consensys (MetaMask).",
       "bullets": [
-        "Onboarded 900k+ gamers unfamiliar with Web3 onto the chain. NFT purchase and verification UX that contributed to up to $150k monthly revenue.",
-        "Eight NFT mint pages grossing 300M+ KRW, transaction-receipt verification logic, back-office tooling, and a shared UI component library on npm."
+        "User count up 20,000%+ after the rebrand, with 1.38M+ monthly transactions and $152.73K+ monthly volume. Ranked #26 overall on DappRadar's gaming sector and #1 on Linea (April 2024).",
+        "Sold out an 8,888-piece NFT collection in a week, grossing 300M+ KRW. Collaborated in written English with MetaMask (Consensys), Unisat, and Facewallet on bug and improvement reports.",
+        "Split the design system into an npm library (catze-ui) and migrated styled-components to Tailwind. Cut the operational kill switch time by 10+ minutes via the back office."
       ],
       "detail": {
-        "description": "Frontend for Yooldo, a blockchain gaming platform that helps Web2 games transition to Web3, plus game onboarding support.",
+        "description": "Frontend for Yooldo, a blockchain gaming platform that helps Web2 games transition to Web3, plus game onboarding support. Yooldo is Linea's largest GameFi platform; its ESPORTS token is listed on Binance Alpha, Bitget, MEXC, and other major exchanges.",
         "impact": [
-          "Onboarded more than 900,000 users onto the platform.",
-          "Contributed to up to $150k monthly revenue through NFT purchase and verification UX.",
-          "Helped secure investment from Consensys, the company behind MetaMask.",
-          "Built eight or more in-house NFT mint pages grossing over 300M KRW."
+          "User count up 20,000%+ after the rebrand (2023.07–11). 1.38M+ monthly transactions, $152.73K+ monthly volume.",
+          "Ranked #26 overall on DappRadar's gaming sector and #1 on Linea as of April 2024.",
+          "The Yooldo x Linea Park cross-chain event brought in about 750,000 new users. Resolved traffic-driven issues including Vercel image-optimization costs and bandwidth overruns.",
+          "Sold out an 8,888-piece collection in a week, grossing 300M+ KRW. Ran NFT campaigns with chains including Kroma, Astar, and Manta Network.",
+          "Exchanged written English bug and improvement reports with MetaMask (Consensys), Unisat Wallet, and HaechiLabs' Facewallet team."
         ],
         "projects": [
           {
-            "title": "Yooldo platform frontend",
+            "title": "Yooldo x Linea Park (cross-chain campaign)",
+            "period": "2024.02 – 2024.04",
+            "problem": "The campaign needed to funnel a multi-chain audience into one specific chain, and the resulting 750,000 new users triggered heavy traffic problems: bandwidth overruns on image/video assets, spiking Vercel image-optimization costs, and edge cases in verifying deleted accounts' game IDs.",
             "approach": [
-              "Platform development, operations, and on-chain event handling.",
+              "Tracked multi-chain participation with GA metrics and responded to community issues in real time.",
+              "Moved transaction execution from server-side to client-side plus receipt verification to cut load.",
+              "Relaxed game-ID verification for deleted accounts and supported post-launch CS."
+            ]
+          },
+          {
+            "title": "Yooldo rebrand",
+            "period": "2023.07 – 2023.11",
+            "problem": "Legacy code and an aging stack (styled-components, localStorage token storage) were holding back a brand refresh.",
+            "approach": [
+              "Split atomic components into an npm library (catze-ui); separated the asset-heavy landing page from the game and on-chain interaction pages.",
+              "Migrated styled-components to Tailwind CSS, adopted SSR, moved access tokens from localStorage to cookies with an expiry timer.",
+              "Built and maintained Jury DAO, a decentralized system for reporting and filtering abusive in-game users."
+            ]
+          },
+          {
+            "title": "Game login and security",
+            "period": "2023.08 – 2024.02",
+            "problem": "Yooldo's own published games (Trouble Punk, RPD, and others) needed secure login and detection of tampered game clients.",
+            "approach": [
+              "Introduced universal/deep-link login (yooldo://game/troublepunk) for improved security.",
+              "Tracked game asset S3 hashes through the back office to detect tampered launchers.",
+              "Supported Play Store market-link entry for Android-only titles."
+            ]
+          },
+          {
+            "title": "Back-office development and operations",
+            "period": "2023.04 – 2024.08",
+            "approach": [
+              "Cut the operational kill switch time by 10+ minutes. User/site interaction tracking, batch email sends, scheduled project updates.",
+              "Shipped operational tools such as Jury DAO and the BRC-20 bridge through the back office; scheduled GitHub PR merges in the CI/CD pipeline.",
+              "Contract, user, and on-chain interaction log tracking; set policy for wallet keys and infra credentials."
+            ]
+          },
+          {
+            "title": "Platform frontend & transaction verification",
+            "approach": [
+              "Development and operations of the blockchain game web platform, handling on-chain interaction events.",
               "Transaction-receipt analysis to verify in-game asset acquisition.",
-              "Back-office features and a shared UI component library published to npm."
+              "Built and ran a Bitcoin bridge (BRC-20)."
             ]
           }
         ],
@@ -370,23 +428,26 @@
       "company": "Bluepoint Partners",
       "role": "Frontend Engineer",
       "start": "2021-07",
-      "end": "2022-03",
+      "end": "2022-02",
       "current": false,
       "compact": true,
-      "oneLiner": "In-house investment management tool for an accelerator. Automated a three-day contract-prep process.",
+      "oneLiner": "In-house investment management tool for an accelerator. Six months as an intern, then two months on contract.",
       "bullets": [],
       "detail": {
-        "description": "Built the in-house investment management tool for an accelerator focused on seed and pre-A tech startups.",
+        "description": "Worked at Bluepoint Partners, an accelerator for seed and pre-A tech startups, six months as an intern followed by two months on contract. Built the firm's in-house investment management tool.",
         "impact": [
-          "Automated investment-contract preparation that used to take more than three days.",
-          "Consolidated portfolio tracking that had been scattered across teams."
+          "Automated investment-contract preparation, generating documents in under a second instead of three-plus days.",
+          "Consolidated deal data that had been scattered across spreadsheets into time-series and location-based charts.",
+          "Built a Slack-integrated alert for investment-proposal inflow from the homepage."
         ],
         "projects": [
           {
             "title": "Startup investment management tool",
             "approach": [
               "Improved deal-sourcing UX through interviews with investment associates.",
-              "Time-series and conversion visualizations with recharts."
+              "Time-series and location-based conversion visualizations with recharts.",
+              "Automated contract-document generation, cutting a three-plus-day task to under a second.",
+              "Slack alert integration for investment-proposal inflow from the homepage."
             ]
           }
         ],
@@ -404,10 +465,10 @@
       "end": "2019-06",
       "current": false,
       "compact": true,
-      "oneLiner": "FOUND, a GPS-based lost-and-found reward app. 5k Play Store downloads.",
+      "oneLiner": "FOUND, a GPS-based lost-and-found reward app. 5k Play Store downloads, ran until Feb 2020.",
       "bullets": [],
       "detail": {
-        "description": "Built and operated FOUND, a GPS-based lost-and-found reward app, in the Yongin area.",
+        "description": "Built FOUND, a GPS-based lost-and-found reward app, at location-services startup Tasting Venture. Operated in the Yongin area; the service itself ran until February 2020.",
         "impact": [
           "5,000 downloads on the Play Store."
         ],
@@ -415,14 +476,16 @@
           {
             "title": "FOUND",
             "approach": [
-              "Found-item reporting flow (Android, Java).",
+              "Found-item reporting flow with Android Studio (Java), Retrofit, and Glide.",
+              "Hybrid app built with Angular and the Ionic Framework.",
               "KakaoTalk chatbot for lost-item reports with a Flask/MongoDB webhook server."
             ]
           }
         ],
         "stack": {
           "Android": "Java, Retrofit2, Glide",
-          "Backend": "Python, Flask, MongoDB"
+          "Backend": "Python, Flask, MongoDB",
+          "Hybrid": "Angular, Ionic Framework"
         }
       },
       "project": "FOUND"
