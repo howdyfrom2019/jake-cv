@@ -113,7 +113,7 @@ a {
 }
 @page {
   size: A4;
-  margin: 9mm 11mm;
+  margin: 18mm 16mm;
 }
 @media print {
   html,
