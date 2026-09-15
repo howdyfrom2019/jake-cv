@@ -12,7 +12,7 @@ bun dev            # http://localhost:3000
 bun run build:all  # next build + PDF 생성
 ```
 
-PDF는 시스템 Chrome(headless)으로 `/print/{ko|en}/{cv|portfolio}`를 렌더해 `public/downloads/`에 저장한다. 데이터를 바꾸면 `bun run pdf`를 다시 돌려야 한다.
+PDF는 시스템 Chrome(headless)으로 `/print/{ko|en}/{cv|portfolio}`를 렌더해 `public/downloads/`에 저장한다. 데이터를 바꾸면 `bun run pdf`를 다시 돌려야 한다. `page.pdf({ scale: 0.75 })`로 전체를 75%로 축소해 찍기 때문에 `@page` 여백(18mm/16mm)이 실제보다 훨씬 넉넉해 보이고, 텍스트가 페이지 폭을 넘겨 잘리는 일도 없다(스케일 값은 `scripts/build-pdf.ts`).
 
 ## 라우트
 

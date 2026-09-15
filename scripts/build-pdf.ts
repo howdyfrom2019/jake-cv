@@ -58,6 +58,10 @@ async function main() {
           format: 'A4',
           printBackground: true,
           preferCSSPageSize: true,
+          // Shrinks the whole rendered page (text, spacing, everything) down
+          // uniformly onto the same A4 sheet, so it reads as roomy rather than
+          // packed to the edges — without touching per-page CSS.
+          scale: 0.75,
         })
         console.log(`✓ ${file.replace(process.cwd() + '/', '')}`)
       }
