@@ -24,7 +24,7 @@ export function PrintDoc({ locale, kind }: { locale: Locale; kind: 'cv' | 'portf
     : []
 
   return (
-    <div className="print-page mx-auto max-w-[760px] px-2 py-2">
+    <div className="print-page w-full">
       <header className="flex items-start justify-between gap-6">
         <div>
           <h1 className="text-[20pt] font-semibold tracking-tight">
